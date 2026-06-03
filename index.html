@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ivory Issue Co — Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#F5F0E8;font-family:'Playfair Display',Georgia,serif;color:#1a1a1a;}
+a{text-decoration:none;}
+
+/* HERO */
+.hero{background:#1a1a1a;padding:70px 48px 60px;text-align:center;}
+.hero-label{color:#c9b882;font-size:11px;letter-spacing:6px;font-family:sans-serif;margin-bottom:14px;}
+.hero-title{color:#F5F0E8;font-size:52px;font-style:italic;font-weight:400;margin-bottom:10px;}
+.hero-sub{color:#555;font-size:11px;letter-spacing:3px;font-family:sans-serif;margin-bottom:26px;}
+.hero-bar{width:60px;height:1.5px;background:#c9b882;margin:0 auto 26px;}
+.hero-desc{color:#aaa;font-size:15px;font-style:italic;max-width:460px;margin:0 auto;line-height:1.9;}
+
+/* SPECS */
+.specs{display:flex;background:#c9b882;}
+.spec{flex:1;text-align:center;padding:16px 8px;border-right:1px solid #b8a46e;}
+.spec:last-child{border-right:none;}
+.spec-val{font-size:18px;font-weight:500;color:#1a1a1a;display:block;}
+.spec-key{font-size:9px;letter-spacing:2px;color:#3a3010;margin-top:2px;display:block;font-family:sans-serif;}
+
+/* SECTIONS */
+.section{padding:56px 48px;}
+.section-dark{background:#1a1a1a;padding:56px 48px;}
+.section-alt{background:#FAF6EF;padding:56px 48px;}
+.sec-label{font-size:10px;letter-spacing:5px;color:#c9b882;font-family:sans-serif;margin-bottom:6px;}
+.sec-title{font-size:32px;font-style:italic;font-weight:400;margin-bottom:36px;}
+.section-dark .sec-title{color:#F5F0E8;}
+
+/* EDITIONS & TEMPLATES (Responsive Grids) */
+.edition-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+.ecard{background:#fff;border:0.5px solid #ddd6c4;border-radius:2px;padding:26px 20px;}
+.ecard-num{font-size:10px;letter-spacing:3px;color:#c9b882;font-family:sans-serif;display:block;margin-bottom:10px;}
+.ecard-name{font-size:20px;font-style:italic;font-weight:400;margin-bottom:10px;}
+.ecard-tag{font-size:13px;color:#888;font-family:sans-serif;line-height:1.65;}
+
+.tpl-intro{font-size:14px;color:#888;font-family:sans-serif;line-height:1.7;margin-bottom:30px;max-width:560px;font-style:italic;}
+.tpl-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px;}
+.tpl-card{display:block;color:inherit;border-radius:2px;overflow:hidden;border:0.5px solid #ddd6c4;background:#fff;transition:transform 0.2s ease,box-shadow 0.2s ease;}
+.tpl-card:hover{transform:translateY(-4px);box-shadow:0 6px 15px rgba(0,0,0,0.05);}
+.tpl-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.tpl-label{padding:10px 14px;border-top:0.5px solid #ddd6c4;}
+.tpl-name{font-size:13px;font-style:italic;font-weight:400;margin-bottom:2px;}
+.tpl-sub{font-size:11px;color:#888;font-family:sans-serif;}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.feat{border:0.5px solid #2e2e2e;padding:22px 18px;border-radius:2px;}
+.feat-icon{font-size:22px;color:#c9b882;margin-bottom:12px;}
+.feat-title{font-size:15px;font-style:italic;color:#F5F0E8;font-weight:400;margin-bottom:6px;}
+.feat-desc{font-size:13px;color:#666;font-family:sans-serif;line-height:1.6;}
+
+/* STEPS */
+.steps{display:flex;gap:0;}
+.step{flex:1;text-align:center;padding:0 16px;position:relative;}
+.step:not(:last-child)::after{content:'';position:absolute;top:20px;right:-1px;width:1px;height:42px;background:#ddd6c4;}
+.step-num{width:42px;height:42px;border-radius:50%;border:1px solid #c9b882;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:17px;font-style:italic;color:#c9b882;}
+.step-title{font-size:15px;font-style:italic;font-weight:400;margin-bottom:7px;}
+.step-desc{font-size:13px;color:#888;font-family:sans-serif;line-height:1.6;}
+
+/* FOOTER */
+.footer{background:#1a1a1a;padding:52px 48px;text-align:center;}
+.footer-title{color:#F5F0E8;font-size:28px;font-style:italic;font-weight:400;margin-bottom:10px;}
+.footer-sub{color:#777;font-size:13px;font-family:sans-serif;letter-spacing:1px;margin-bottom:26px;}
+.footer-btn{display:inline-block;background:#c9b882;color:#1a1a1a;padding:15px 42px;font-size:11px;letter-spacing:3px;font-family:sans-serif;border-radius:1px;}
+.footer-note{color:#444;font-size:12px;font-family:sans-serif;margin-top:18px;}
+.footer-handle{color:#c9b882;font-size:13px;font-family:sans-serif;margin-top:6px;}
+.divider{height:1px;background:#ddd6c4;margin:0 48px;}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (AUTO-FIT FOR ALL DEVICES)
+   ========================================= */
+@media (max-width: 768px) {
+  .hero { padding: 60px 24px 50px; }
+  .hero-title { font-size: 38px; }
+  
+  .section, .section-dark, .section-alt, .footer { padding: 40px 24px; }
+  .sec-title { font-size: 26px; margin-bottom: 24px; }
+
+  /* Stack Specs in a 2-column grid on mobile */
+  .specs { display: grid; grid-template-columns: 1fr 1fr; }
+  .spec { border-right: 1px solid #b8a46e; border-bottom: 1px solid #b8a46e; padding: 12px 8px; }
+  .spec:nth-child(2n) { border-right: none; }
+  .spec:last-child { grid-column: span 2; border-bottom: none; border-right: none; }
+
+  /* Stack steps vertically and rotate connecting line */
+  .steps { flex-direction: column; gap: 40px; }
+  .step { padding: 0; }
+  .step:not(:last-child)::after { 
+    width: 1px; 
+    height: 30px; 
+    top: 100%; 
+    left: 50%; 
+    right: auto; 
+    transform: translateX(-50%); 
+    margin-top: 5px; 
+  }
+  
+  .divider { margin: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-label">IVORY ISSUE CO</p>
+  <h1 class="hero-title">The Personalised Magazine</h1>
+  <p class="hero-sub">EST. 2026 &nbsp;&middot;&nbsp; COLLECTOR'S CATALOGUE</p>
+  <div class="hero-bar"></div>
+  <p class="hero-desc">A beautifully crafted A5 magazine, made entirely for the person you love &mdash; filled with their memories, their story, and their moments.</p>
+</div>
+
+<div class="specs">
+  <div class="spec"><span class="spec-val">A5</span><span class="spec-key">FORMAT</span></div>
+  <div class="spec"><span class="spec-val">8</span><span class="spec-key">PAGES</span></div>
+  <div class="spec"><span class="spec-val">25&ndash;30</span><span class="spec-key">PICTURES</span></div>
+  <div class="spec"><span class="spec-val">6 days</span><span class="spec-key">DELIVERY</span></div>
+  <div class="spec"><span class="spec-val">&#8377;499</span><span class="spec-key">PRICE</span></div>
+</div>
+
+<div class="section">
+  <p class="sec-label">OUR EDITIONS</p>
+  <h2 class="sec-title">Choose your story</h2>
+  <div class="edition-grid">
+    <div class="ecard"><span class="ecard-num">EDITION 01</span><p class="ecard-name">Birthday edition</p><p class="ecard-tag">Celebrate the person who makes every year brighter &mdash; a full magazine dedicated to their life and joy.</p></div>
+    <div class="ecard"><span class="ecard-num">EDITION 02</span><p class="ecard-name">Anniversary edition</p><p class="ecard-tag">Relive your love story from the very first moment to today, beautifully told across every page.</p></div>
+    <div class="ecard"><span class="ecard-num">EDITION 03</span><p class="ecard-name">Main character edition</p><p class="ecard-tag">For the one who owns every room they walk into &mdash; this is their moment in the spotlight.</p></div>
+    <div class="ecard"><span class="ecard-num">EDITION 04</span><p class="ecard-name">Farewell edition</p><p class="ecard-tag">A heartfelt send-off filled with memories, messages, and moments they'll carry with them always.</p></div>
+    <div class="ecard"><span class="ecard-num">EDITION 05</span><p class="ecard-name">Travel memory edition</p><p class="ecard-tag">Turn your greatest adventures into a stunning travel journal &mdash; every destination, every memory.</p></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-alt">
+  <p class="sec-label">SAMPLE TEMPLATES</p>
+  <h2 class="sec-title">A peek inside your magazine</h2>
+  <p class="tpl-intro">Every page is designed from scratch for your person. Here's a glimpse of what your magazine could look like.</p>
+
+  <div class="tpl-row">
+    <!-- Template 1: Birthday Edition -->
+    <a href="Birthday.pdf" target="_blank" class="tpl-card">
+      <img class="tpl-img" src="birthday.jpg" alt="Birthday Edition"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Birthday edition</p>
+        <p class="tpl-sub">Celebrate the person who makes every year brighter.</p>
+      </div>
+    </a>
+
+    <!-- Template 2: Anniversary Edition -->
+    <a href="Anniversary.pdf" target="_blank" class="tpl-card">
+      <img class="tpl-img" src="Anniversary.jpg" alt="Anniversary Edition"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Anniversary edition</p>
+        <p class="tpl-sub">Relive your love story beautifully told across every page.</p>
+      </div>
+    </a>
+
+    <!-- Template 3: Main Character Edition -->
+    <a href="Main character.pdf" target="_blank" class="tpl-card">
+      <img class="tpl-img" src="maincharacter.png" alt="Main Character Edition"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Main character edition</p>
+        <p class="tpl-sub">For the one who owns every room they walk into.</p>
+      </div>
+    </a>
+
+    <!-- Template 4: Farewell Edition -->
+    <a href="Farewell.pdf" target="_blank" class="tpl-card">
+      <img class="tpl-img" src="farewell.jpg" alt="Farewell Edition"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Farewell edition</p>
+        <p class="tpl-sub">A heartfelt send-off filled with memories and messages.</p>
+      </div>
+    </a>
+
+    <!-- Template 5: New Collage Layout -->
+    <a href="#" class="tpl-card">
+      <img class="tpl-img" src="Anniversary2.jpg" alt="Photo Collage Layout"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Photo Collage Layout</p>
+        <p class="tpl-sub">Beautifully arranged memories for any edition.</p>
+      </div>
+    </a>
+
+    <!-- Template 6: New Grid Layout -->
+    <a href="#" class="tpl-card">
+      <img class="tpl-img" src="maincharacter2.jpg" alt="Grid Layout"/>
+      <div class="tpl-label">
+        <p class="tpl-name">Grid Layout</p>
+        <p class="tpl-sub">A stylish grid to showcase your favorite moments.</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="section-dark">
+  <p class="sec-label">WHY IVORY ISSUE</p>
+  <h2 class="sec-title">Crafted for keeps</h2>
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Premium quality</p><p class="feat-desc">Printed on high-grade 130gsm silk paper with a smooth matte cover finish.</p></div>
+    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Editorial design</p><p class="feat-desc">A full editorial layout in A5 format &mdash; like a real magazine, made just for them.</p></div>
+    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Fully bespoke</p><p class="feat-desc">Every edition is tailored to the individual &mdash; no two magazines are ever alike.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="sec-label">HOW IT WORKS</p>
+  <h2 class="sec-title">Three simple steps</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><p class="step-title">Slide into our DMs</p><p class="step-desc">Send us your photos, details and chosen edition on Instagram.</p></div>
+    <div class="step"><div class="step-num">2</div><p class="step-title">We design it</p><p class="step-desc">Our team crafts every page to match their style and personality.</p></div>
+    <div class="step"><div class="step-num">3</div><p class="step-title">You receive it</p><p class="step-desc">Your finished magazine delivered within 6 days, ready to gift.</p></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p class="footer-title">Ready to create yours?</p>
+  <p class="footer-sub">Every magazine is one of a kind &mdash; just like the person it's made for.</p>
+  <a class="footer-btn" href="https://www.instagram.com/ivoryissueco">ORDER ON INSTAGRAM</a>
+  <p class="footer-note">DM us to get started</p>
+  <p class="footer-handle">@ivoryissueco</p>
+</div>
+
+</body>
+</html>
