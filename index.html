@@ -4,229 +4,1226 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Ivory Issue Co — Catalogue</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:#F5F0E8;font-family:'Playfair Display',Georgia,serif;color:#1a1a1a;}
-a{text-decoration:none;}
+:root {
+  --gold: #c9b882;
+  --gold-dark: #b8a46e;
+  --gold-light: #e0d4a8;
+  --cream: #F5F0E8;
+  --cream-alt: #FAF6EF;
+  --ink: #1a1a1a;
+  --ink-mid: #2e2e2e;
+  --muted: #888;
+  --border: #ddd6c4;
+}
 
-/* HERO */
-.hero{background:#1a1a1a;padding:70px 48px 60px;text-align:center;}
-.hero-label{color:#c9b882;font-size:11px;letter-spacing:6px;font-family:sans-serif;margin-bottom:14px;}
-.hero-title{color:#F5F0E8;font-size:52px;font-style:italic;font-weight:400;margin-bottom:10px;}
-.hero-sub{color:#555;font-size:11px;letter-spacing:3px;font-family:sans-serif;margin-bottom:26px;}
-.hero-bar{width:60px;height:1.5px;background:#c9b882;margin:0 auto 26px;}
-.hero-desc{color:#aaa;font-size:15px;font-style:italic;max-width:460px;margin:0 auto;line-height:1.9;}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* SPECS */
-.specs{display:flex;background:#c9b882;}
-.spec{flex:1;text-align:center;padding:16px 8px;border-right:1px solid #b8a46e;}
-.spec:last-child{border-right:none;}
-.spec-val{font-size:18px;font-weight:500;color:#1a1a1a;display:block;}
-.spec-key{font-size:9px;letter-spacing:2px;color:#3a3010;margin-top:2px;display:block;font-family:sans-serif;}
+html { scroll-behavior: smooth; }
 
-/* SECTIONS */
-.section{padding:56px 48px;}
-.section-dark{background:#1a1a1a;padding:56px 48px;}
-.section-alt{background:#FAF6EF;padding:56px 48px;}
-.sec-label{font-size:10px;letter-spacing:5px;color:#c9b882;font-family:sans-serif;margin-bottom:6px;}
-.sec-title{font-size:32px;font-style:italic;font-weight:400;margin-bottom:36px;}
-.section-dark .sec-title{color:#F5F0E8;}
+body {
+  background: var(--cream);
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--ink);
+  overflow-x: hidden;
+}
 
-/* EDITIONS & TEMPLATES (Responsive Grids) */
-.edition-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
-.ecard{background:#fff;border:0.5px solid #ddd6c4;border-radius:2px;padding:26px 20px;}
-.ecard-num{font-size:10px;letter-spacing:3px;color:#c9b882;font-family:sans-serif;display:block;margin-bottom:10px;}
-.ecard-name{font-size:20px;font-style:italic;font-weight:400;margin-bottom:10px;}
-.ecard-tag{font-size:13px;color:#888;font-family:sans-serif;line-height:1.65;}
+a { text-decoration: none; color: inherit; }
 
-.tpl-intro{font-size:14px;color:#888;font-family:sans-serif;line-height:1.7;margin-bottom:30px;max-width:560px;font-style:italic;}
-.tpl-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px;}
-.tpl-card{display:block;color:inherit;border-radius:2px;overflow:hidden;border:0.5px solid #ddd6c4;background:#fff;transition:transform 0.2s ease,box-shadow 0.2s ease;}
-.tpl-card:hover{transform:translateY(-4px);box-shadow:0 6px 15px rgba(0,0,0,0.05);}
-.tpl-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
-.tpl-label{padding:10px 14px;border-top:0.5px solid #ddd6c4;}
-.tpl-name{font-size:13px;font-style:italic;font-weight:400;margin-bottom:2px;}
-.tpl-sub{font-size:11px;color:#888;font-family:sans-serif;}
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
 
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
-.feat{border:0.5px solid #2e2e2e;padding:22px 18px;border-radius:2px;}
-.feat-icon{font-size:22px;color:#c9b882;margin-bottom:12px;}
-.feat-title{font-size:15px;font-style:italic;color:#F5F0E8;font-weight:400;margin-bottom:6px;}
-.feat-desc{font-size:13px;color:#666;font-family:sans-serif;line-height:1.6;}
+/* ─── HERO ─── */
+.hero {
+  background: var(--ink);
+  padding: 90px 48px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-/* STEPS */
-.steps{display:flex;gap:0;}
-.step{flex:1;text-align:center;padding:0 16px;position:relative;}
-.step:not(:last-child)::after{content:'';position:absolute;top:20px;right:-1px;width:1px;height:42px;background:#ddd6c4;}
-.step-num{width:42px;height:42px;border-radius:50%;border:1px solid #c9b882;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:17px;font-style:italic;color:#c9b882;}
-.step-title{font-size:15px;font-style:italic;font-weight:400;margin-bottom:7px;}
-.step-desc{font-size:13px;color:#888;font-family:sans-serif;line-height:1.6;}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(ellipse, rgba(201,184,130,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-/* FOOTER */
-.footer{background:#1a1a1a;padding:52px 48px;text-align:center;}
-.footer-title{color:#F5F0E8;font-size:28px;font-style:italic;font-weight:400;margin-bottom:10px;}
-.footer-sub{color:#777;font-size:13px;font-family:sans-serif;letter-spacing:1px;margin-bottom:26px;}
-.footer-btn{display:inline-block;background:#c9b882;color:#1a1a1a;padding:15px 42px;font-size:11px;letter-spacing:3px;font-family:sans-serif;border-radius:1px;}
-.footer-note{color:#444;font-size:12px;font-family:sans-serif;margin-top:18px;}
-.footer-handle{color:#c9b882;font-size:13px;font-family:sans-serif;margin-top:6px;}
-.divider{height:1px;background:#ddd6c4;margin:0 48px;}
+.hero-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
 
-/* =========================================
-   MOBILE RESPONSIVENESS (AUTO-FIT FOR ALL DEVICES)
-   ========================================= */
+.hero-ornament-line {
+  width: 50px;
+  height: 0.5px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.hero-label {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 8px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+}
+
+.hero-title {
+  color: var(--cream);
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.5px;
+}
+
+.hero-title span {
+  color: var(--gold);
+}
+
+.hero-sub {
+  color: #555;
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.hero-bar {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 0 auto 32px;
+}
+
+.hero-desc {
+  color: #999;
+  font-size: 16px;
+  font-style: italic;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 2;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+}
+
+/* ─── SPECS ─── */
+.specs {
+  display: flex;
+  background: var(--gold);
+}
+
+.spec {
+  flex: 1;
+  text-align: center;
+  padding: 18px 8px;
+  border-right: 1px solid var(--gold-dark);
+  position: relative;
+  transition: background 0.2s;
+}
+
+.spec:hover { background: var(--gold-dark); }
+.spec:last-child { border-right: none; }
+
+.spec-val {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.spec-key {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(26,26,26,0.6);
+  margin-top: 3px;
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+}
+
+/* ─── SECTIONS ─── */
+.section { padding: 72px 60px; }
+.section-dark { background: var(--ink); padding: 72px 60px; }
+.section-alt { background: var(--cream-alt); padding: 72px 60px; }
+
+.sec-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sec-eyebrow-line {
+  width: 28px;
+  height: 0.5px;
+  background: var(--gold);
+}
+
+.sec-label {
+  font-size: 9px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+}
+
+.sec-title {
+  font-size: 38px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.15;
+}
+
+.section-dark .sec-title { color: var(--cream); }
+.section-dark .sec-label { color: var(--gold); }
+
+/* ─── EDITIONS ─── */
+.edition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.ecard {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 28px 22px;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: default;
+}
+
+.ecard::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.ecard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+  border-color: var(--gold-light);
+}
+
+.ecard:hover::before { width: 100%; }
+
+.ecard-num {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.ecard-name {
+  font-size: 21px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.ecard-tag {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ─── TEMPLATES ─── */
+.tpl-intro {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 36px;
+  max-width: 560px;
+  font-style: italic;
+}
+
+.tpl-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.tpl-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.tpl-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+}
+
+/* Image placeholder with elegant gradient */
+.tpl-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  position: relative;
+  overflow: hidden;
+  background: #f0ebe0;
+}
+
+.tpl-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.tpl-card:hover .tpl-img {
+  transform: scale(1.04);
+}
+
+/* Fallback gradient when image fails */
+.tpl-img-wrap::after {
+  content: attr(data-edition);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold);
+  background: linear-gradient(160deg, #f0ebe0 0%, #e8e0cc 100%);
+  opacity: 0; /* hidden when image loads */
+  pointer-events: none;
+}
+
+.tpl-img.errored ~ .tpl-img-wrap::after { opacity: 1; }
+
+.tpl-label {
+  padding: 14px 16px 12px;
+  border-top: 0.5px solid var(--border);
+  flex: 1;
+}
+
+.tpl-name {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 3px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.tpl-sub {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+/* ─── VIEW PDF BUTTON ─── */
+.tpl-btn-wrap {
+  padding: 0 16px 16px;
+}
+
+.tpl-view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: 0.5px solid var(--gold);
+  color: var(--ink);
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  text-transform: uppercase;
+}
+
+.tpl-view-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.tpl-view-btn:active {
+  transform: translateY(0);
+}
+
+.tpl-view-btn svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.7;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.tpl-view-btn:hover svg {
+  opacity: 1;
+}
+
+/* Coming soon badge */
+.tpl-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(26,26,26,0.75);
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 2px;
+  padding: 4px 8px;
+  font-family: 'Jost', sans-serif;
+  border-radius: 1px;
+  backdrop-filter: blur(4px);
+}
+
+/* ─── FEATURES ─── */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.feat {
+  border: 0.5px solid #2e2e2e;
+  padding: 28px 22px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.feat:hover {
+  border-color: var(--gold);
+}
+
+.feat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.feat:hover::before { opacity: 1; }
+
+.feat-icon {
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.feat-title {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--cream);
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.feat-desc {
+  font-size: 12.5px;
+  color: #666;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ─── STEPS ─── */
+.steps {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: calc(16.66% + 21px);
+  right: calc(16.66% + 21px);
+  height: 0.5px;
+  background: linear-gradient(to right, var(--gold-dark), var(--gold-dark));
+  opacity: 0.3;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--cream);
+  position: relative;
+  z-index: 1;
+  transition: background 0.25s, color 0.25s;
+}
+
+.step:hover .step-num {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.step-title {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.step-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 0 60px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--ink);
+  padding: 70px 48px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 300px;
+  background: radial-gradient(ellipse, rgba(201,184,130,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.footer-ornament {
+  width: 60px;
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 28px;
+}
+
+.footer-title {
+  color: var(--cream);
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.footer-sub {
+  color: #666;
+  font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 34px;
+}
+
+.footer-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 16px 48px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  border-radius: 1px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.footer-btn:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
+.footer-note {
+  color: #444;
+  font-size: 11px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.footer-handle {
+  color: var(--gold);
+  font-size: 13px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  margin-top: 6px;
+  transition: color 0.2s;
+}
+
+.footer-handle:hover { color: var(--gold-light); }
+
+/* ─── PDF MODAL / OVERLAY ─── */
+.pdf-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+}
+
+.pdf-overlay.open {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pdf-modal {
+  background: var(--ink-mid);
+  border: 0.5px solid #3a3a3a;
+  border-radius: 4px;
+  width: min(92vw, 860px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s ease;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 0.5px solid #3a3a3a;
+}
+
+.pdf-modal-title {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.pdf-modal-sub {
+  font-size: 10px;
+  color: #666;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.pdf-close {
+  width: 32px; height: 32px;
+  border: 0.5px solid #444;
+  border-radius: 50%;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.pdf-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.pdf-body {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* When actual PDF is unavailable — show elegant placeholder */
+.pdf-unavailable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.pdf-unavailable-icon {
+  width: 64px; height: 64px;
+  border: 0.5px solid #3a3a3a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.pdf-unavailable-title {
+  font-size: 20px;
+  font-style: italic;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.pdf-unavailable-text {
+  font-size: 13px;
+  color: #555;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  max-width: 360px;
+  line-height: 1.7;
+}
+
+.pdf-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-family: 'Jost', sans-serif;
+  border-radius: 1px;
+  transition: background 0.2s;
+}
+
+.pdf-open-link:hover { background: var(--gold-dark); }
+
+iframe.pdf-frame {
+  width: 100%;
+  height: 65vh;
+  border: none;
+  border-radius: 2px;
+}
+
+/* ─── MOBILE ─── */
 @media (max-width: 768px) {
-  .hero { padding: 60px 24px 50px; }
-  .hero-title { font-size: 38px; }
-  
-  .section, .section-dark, .section-alt, .footer { padding: 40px 24px; }
-  .sec-title { font-size: 26px; margin-bottom: 24px; }
+  .hero { padding: 70px 24px 60px; }
+  .hero-title { font-size: 44px; }
+  .hero-desc { font-size: 15px; }
 
-  /* Stack Specs in a 2-column grid on mobile */
-  .specs { display: grid; grid-template-columns: 1fr 1fr; }
-  .spec { border-right: 1px solid #b8a46e; border-bottom: 1px solid #b8a46e; padding: 12px 8px; }
-  .spec:nth-child(2n) { border-right: none; }
-  .spec:last-child { grid-column: span 2; border-bottom: none; border-right: none; }
+  .section, .section-dark, .section-alt, .footer { padding: 52px 24px; }
+  .sec-title { font-size: 30px; margin-bottom: 28px; }
 
-  /* Stack steps vertically and rotate connecting line */
-  .steps { flex-direction: column; gap: 40px; }
-  .step { padding: 0; }
-  .step:not(:last-child)::after { 
-    width: 1px; 
-    height: 30px; 
-    top: 100%; 
-    left: 50%; 
-    right: auto; 
-    transform: translateX(-50%); 
-    margin-top: 5px; 
+  .specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-  
+  .spec {
+    border-right: 1px solid var(--gold-dark);
+    border-bottom: 1px solid var(--gold-dark);
+    padding: 14px 8px;
+  }
+  .spec:nth-child(2n) { border-right: none; }
+  .spec:nth-child(5) { grid-column: span 2; border-bottom: none; }
+
+  .steps {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .steps::before { display: none; }
+  .step { padding: 0 12px; }
+
   .divider { margin: 0 24px; }
+  .footer-title { font-size: 28px; }
+
+  .pdf-modal { width: 96vw; max-height: 95vh; }
+  .pdf-body { padding: 16px; }
+  iframe.pdf-frame { height: 55vh; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 36px; }
+  .tpl-row { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
 <body>
 
+<!-- ═══ HERO ═══ -->
 <div class="hero">
-  <p class="hero-label">IVORY ISSUE CO</p>
-  <h1 class="hero-title">The Personalised Magazine</h1>
+  <div class="hero-ornament">
+    <span class="hero-ornament-line"></span>
+    <p class="hero-label">IVORY ISSUE CO</p>
+    <span class="hero-ornament-line"></span>
+  </div>
+  <h1 class="hero-title">The Personalised <span>Magazine</span></h1>
   <p class="hero-sub">EST. 2026 &nbsp;&middot;&nbsp; COLLECTOR'S CATALOGUE</p>
   <div class="hero-bar"></div>
-  <p class="hero-desc">A beautifully crafted A5 magazine, made entirely for the person you love &mdash; filled with their memories, their story, and their moments.</p>
+  <p class="hero-desc">A beautifully crafted A5 magazine, made entirely for the person you love — filled with their memories, their story, and their moments.</p>
 </div>
 
+<!-- ═══ SPECS ═══ -->
 <div class="specs">
   <div class="spec"><span class="spec-val">A5</span><span class="spec-key">FORMAT</span></div>
   <div class="spec"><span class="spec-val">8</span><span class="spec-key">PAGES</span></div>
-  <div class="spec"><span class="spec-val">25&ndash;30</span><span class="spec-key">PICTURES</span></div>
+  <div class="spec"><span class="spec-val">25–30</span><span class="spec-key">PICTURES</span></div>
   <div class="spec"><span class="spec-val">6 days</span><span class="spec-key">DELIVERY</span></div>
-  <div class="spec"><span class="spec-val">&#8377;499</span><span class="spec-key">PRICE</span></div>
+  <div class="spec"><span class="spec-val">₹499</span><span class="spec-key">PRICE</span></div>
 </div>
 
+<!-- ═══ EDITIONS ═══ -->
 <div class="section">
-  <p class="sec-label">OUR EDITIONS</p>
+  <div class="sec-eyebrow">
+    <span class="sec-eyebrow-line"></span>
+    <p class="sec-label">OUR EDITIONS</p>
+  </div>
   <h2 class="sec-title">Choose your story</h2>
-  <div class="edition-grid">
-    <div class="ecard"><span class="ecard-num">EDITION 01</span><p class="ecard-name">Birthday edition</p><p class="ecard-tag">Celebrate the person who makes every year brighter &mdash; a full magazine dedicated to their life and joy.</p></div>
-    <div class="ecard"><span class="ecard-num">EDITION 02</span><p class="ecard-name">Anniversary edition</p><p class="ecard-tag">Relive your love story from the very first moment to today, beautifully told across every page.</p></div>
-    <div class="ecard"><span class="ecard-num">EDITION 03</span><p class="ecard-name">Main character edition</p><p class="ecard-tag">For the one who owns every room they walk into &mdash; this is their moment in the spotlight.</p></div>
-    <div class="ecard"><span class="ecard-num">EDITION 04</span><p class="ecard-name">Farewell edition</p><p class="ecard-tag">A heartfelt send-off filled with memories, messages, and moments they'll carry with them always.</p></div>
-    <div class="ecard"><span class="ecard-num">EDITION 05</span><p class="ecard-name">Travel memory edition</p><p class="ecard-tag">Turn your greatest adventures into a stunning travel journal &mdash; every destination, every memory.</p></div>
+  <div class="edition-grid reveal">
+    <div class="ecard">
+      <span class="ecard-num">EDITION 01</span>
+      <p class="ecard-name">Birthday edition</p>
+      <p class="ecard-tag">Celebrate the person who makes every year brighter — a full magazine dedicated to their life and joy.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">EDITION 02</span>
+      <p class="ecard-name">Anniversary edition</p>
+      <p class="ecard-tag">Relive your love story from the very first moment to today, beautifully told across every page.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">EDITION 03</span>
+      <p class="ecard-name">Main character edition</p>
+      <p class="ecard-tag">For the one who owns every room they walk into — this is their moment in the spotlight.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">EDITION 04</span>
+      <p class="ecard-name">Farewell edition</p>
+      <p class="ecard-tag">A heartfelt send-off filled with memories, messages, and moments they'll carry with them always.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">EDITION 05</span>
+      <p class="ecard-name">Travel memory edition</p>
+      <p class="ecard-tag">Turn your greatest adventures into a stunning travel journal — every destination, every memory.</p>
+    </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
+<!-- ═══ TEMPLATES ═══ -->
 <div class="section-alt">
-  <p class="sec-label">SAMPLE TEMPLATES</p>
+  <div class="sec-eyebrow">
+    <span class="sec-eyebrow-line"></span>
+    <p class="sec-label">SAMPLE TEMPLATES</p>
+  </div>
   <h2 class="sec-title">A peek inside your magazine</h2>
   <p class="tpl-intro">Every page is designed from scratch for your person. Here's a glimpse of what your magazine could look like.</p>
 
-  <div class="tpl-row">
-    <!-- Template 1: Birthday Edition -->
-    <a href="Birthday.pdf" target="_blank" class="tpl-card">
-      <img class="tpl-img" src="birthday.jpg" alt="Birthday Edition"/>
+  <div class="tpl-row reveal">
+
+    <!-- Birthday -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Birthday Edition">
+        <img class="tpl-img" src="./pic/birthday.png" alt="Birthday Edition" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Birthday edition</p>
         <p class="tpl-sub">Celebrate the person who makes every year brighter.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Birthday.pdf', 'Birthday Edition')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
 
-    <!-- Template 2: Anniversary Edition -->
-    <a href="Anniversary.pdf" target="_blank" class="tpl-card">
-      <img class="tpl-img" src="Anniversary.jpg" alt="Anniversary Edition"/>
+    <!-- Anniversary -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Anniversary Edition">
+        <img class="tpl-img" src="./pic/Anniversary.png" alt="Anniversary Edition" onerror="this.style.display='none'" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Anniversary edition</p>
         <p class="tpl-sub">Relive your love story beautifully told across every page.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Anniversary.pdf', 'Anniversary Edition')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
 
-    <!-- Template 3: Main Character Edition -->
-    <a href="Main character.pdf" target="_blank" class="tpl-card">
-      <img class="tpl-img" src="maincharacter.png" alt="Main Character Edition"/>
+    <!-- Main Character -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Main Character Edition">
+        <img class="tpl-img" src="./pic/maincharacter.png" alt="Main Character Edition" onerror="this.style.display='none'" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Main character edition</p>
         <p class="tpl-sub">For the one who owns every room they walk into.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Main character.pdf', 'Main Character Edition')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
 
-    <!-- Template 4: Farewell Edition -->
-    <a href="Farewell.pdf" target="_blank" class="tpl-card">
-      <img class="tpl-img" src="farewell.jpg" alt="Farewell Edition"/>
+    <!-- Farewell -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Farewell Edition">
+        <img class="tpl-img" src="./pic/farewell.png" alt="Farewell Edition" onerror="this.style.display='none'" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Farewell edition</p>
         <p class="tpl-sub">A heartfelt send-off filled with memories and messages.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Farewell.pdf', 'Farewell Edition')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
 
-    <!-- Template 5: New Collage Layout -->
-    <a href="#" class="tpl-card">
-      <img class="tpl-img" src="Anniversary2.jpg" alt="Photo Collage Layout"/>
+    <!-- Photo Collage -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Photo Collage Layout">
+        <img class="tpl-img" src="./pic/Anniversary2.png" alt="Photo Collage Layout" onerror="this.style.display='none'" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Photo Collage Layout</p>
         <p class="tpl-sub">Beautifully arranged memories for any edition.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Anniversary.pdf', 'Photo Collage Layout')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
 
-    <!-- Template 6: New Grid Layout -->
-    <a href="#" class="tpl-card">
-      <img class="tpl-img" src="maincharacter2.jpg" alt="Grid Layout"/>
+    <!-- Grid Layout -->
+    <div class="tpl-card">
+      <div class="tpl-img-wrap" data-edition="Grid Layout">
+        <img class="tpl-img" src="./pic/maincharacter2.png" alt="Grid Layout" onerror="this.style.display='none'" />
+      </div>
       <div class="tpl-label">
         <p class="tpl-name">Grid Layout</p>
-        <p class="tpl-sub">A stylish grid to showcase your favorite moments.</p>
+        <p class="tpl-sub">A stylish grid to showcase your favourite moments.</p>
       </div>
-    </a>
+      <div class="tpl-btn-wrap">
+        <button class="tpl-view-btn" onclick="openPDF('./pdf/Main character.pdf', 'Grid Layout')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+          </svg>
+          VIEW SAMPLE PDF
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<!-- ═══ FEATURES ═══ -->
 <div class="section-dark">
-  <p class="sec-label">WHY IVORY ISSUE</p>
+  <div class="sec-eyebrow">
+    <span class="sec-eyebrow-line"></span>
+    <p class="sec-label">WHY IVORY ISSUE</p>
+  </div>
   <h2 class="sec-title">Crafted for keeps</h2>
-  <div class="feat-grid">
-    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Premium quality</p><p class="feat-desc">Printed on high-grade 130gsm silk paper with a smooth matte cover finish.</p></div>
-    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Editorial design</p><p class="feat-desc">A full editorial layout in A5 format &mdash; like a real magazine, made just for them.</p></div>
-    <div class="feat"><div class="feat-icon">&#10024;</div><p class="feat-title">Fully bespoke</p><p class="feat-desc">Every edition is tailored to the individual &mdash; no two magazines are ever alike.</p></div>
+  <div class="feat-grid reveal">
+    <div class="feat">
+      <span class="feat-icon">✦</span>
+      <p class="feat-title">Premium quality</p>
+      <p class="feat-desc">Printed on high-grade 130gsm silk paper with a smooth matte cover finish.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-icon">✦</span>
+      <p class="feat-title">Editorial design</p>
+      <p class="feat-desc">A full editorial layout in A5 format — like a real magazine, made just for them.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-icon">✦</span>
+      <p class="feat-title">Fully bespoke</p>
+      <p class="feat-desc">Every edition is tailored to the individual — no two magazines are ever alike.</p>
+    </div>
   </div>
 </div>
 
+<!-- ═══ STEPS ═══ -->
 <div class="section">
-  <p class="sec-label">HOW IT WORKS</p>
+  <div class="sec-eyebrow">
+    <span class="sec-eyebrow-line"></span>
+    <p class="sec-label">HOW IT WORKS</p>
+  </div>
   <h2 class="sec-title">Three simple steps</h2>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><p class="step-title">Slide into our DMs</p><p class="step-desc">Send us your photos, details and chosen edition on Instagram.</p></div>
-    <div class="step"><div class="step-num">2</div><p class="step-title">We design it</p><p class="step-desc">Our team crafts every page to match their style and personality.</p></div>
-    <div class="step"><div class="step-num">3</div><p class="step-title">You receive it</p><p class="step-desc">Your finished magazine delivered within 6 days, ready to gift.</p></div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <p class="step-title">Slide into our DMs</p>
+      <p class="step-desc">Send us your photos, details and chosen edition on Instagram.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p class="step-title">We design it</p>
+      <p class="step-desc">Our team crafts every page to match their style and personality.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p class="step-title">You receive it</p>
+      <p class="step-desc">Your finished magazine delivered within 6 days, ready to gift.</p>
+    </div>
   </div>
 </div>
 
+<!-- ═══ FOOTER ═══ -->
 <div class="footer">
+  <div class="footer-ornament"></div>
   <p class="footer-title">Ready to create yours?</p>
-  <p class="footer-sub">Every magazine is one of a kind &mdash; just like the person it's made for.</p>
-  <a class="footer-btn" href="https://www.instagram.com/ivoryissueco">ORDER ON INSTAGRAM</a>
+  <p class="footer-sub">Every magazine is one of a kind — just like the person it's made for.</p>
+  <a class="footer-btn" href="https://www.instagram.com/ivoryissueco" target="_blank" rel="noopener">ORDER ON INSTAGRAM</a>
   <p class="footer-note">DM us to get started</p>
-  <p class="footer-handle">@ivoryissueco</p>
+  <a class="footer-handle" href="https://www.instagram.com/ivoryissueco" target="_blank" rel="noopener">@ivoryissueco</a>
 </div>
+
+<!-- ═══ PDF OVERLAY MODAL ═══ -->
+<div class="pdf-overlay" id="pdfOverlay" onclick="handleOverlayClick(event)">
+  <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal-header">
+      <div>
+        <p class="pdf-modal-title" id="pdfTitle">Sample Template</p>
+        <p class="pdf-modal-sub">IVORY ISSUE CO &nbsp;·&nbsp; SAMPLE</p>
+      </div>
+      <button class="pdf-close" onclick="closePDF()" aria-label="Close">&#215;</button>
+    </div>
+    <div class="pdf-body" id="pdfBody">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── PDF MODAL ─── */
+function openPDF(file, title) {
+  const overlay = document.getElementById('pdfOverlay');
+  const body    = document.getElementById('pdfBody');
+  const heading = document.getElementById('pdfTitle');
+
+  heading.textContent = title;
+  body.innerHTML = '';
+
+  // Try to embed the PDF; show fallback if it fails
+  const iframe = document.createElement('iframe');
+  iframe.className = 'pdf-frame';
+  iframe.title = title;
+
+  // Build the src — use object-based fallback approach
+  iframe.src = file;
+
+  iframe.onerror = function() { showPDFFallback(body, file, title); };
+
+  // Also show fallback if iframe is blank after short delay
+  // (some browsers block local PDFs in iframes)
+  const fallbackTimer = setTimeout(function() {
+    // If iframe loaded content, its contentDocument won't be null
+    // For cross-origin / file:// restrictions we just show fallback
+    if (!iframe.contentDocument || iframe.contentDocument.URL === 'about:blank') {
+      showPDFFallback(body, file, title);
+    }
+  }, 2000);
+
+  iframe.onload = function() {
+    clearTimeout(fallbackTimer);
+    // Check for blank (PDF blocked by browser)
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc || doc.URL === 'about:blank') {
+        showPDFFallback(body, file, title);
+      }
+    } catch(e) {
+      // cross-origin: PDF likely rendered natively, leave iframe
+    }
+  };
+
+  body.appendChild(iframe);
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showPDFFallback(body, file, title) {
+  body.innerHTML = `
+    <div class="pdf-unavailable">
+      <div class="pdf-unavailable-icon">&#128196;</div>
+      <p class="pdf-unavailable-title">${title}</p>
+      <p class="pdf-unavailable-text">
+        Place the PDF file named <strong style="color:#c9b882">${file}</strong> in the same folder as this HTML file to enable in-page preview.
+      </p>
+      <a class="pdf-open-link" href="${file}" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        OPEN IN NEW TAB
+      </a>
+    </div>
+  `;
+}
+
+function closePDF() {
+  const overlay = document.getElementById('pdfOverlay');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  // Clear iframe to stop loading
+  document.getElementById('pdfBody').innerHTML = '';
+}
+
+function handleOverlayClick(e) {
+  // Close if clicking the dark backdrop (not the modal itself)
+  if (e.target === document.getElementById('pdfOverlay')) {
+    closePDF();
+  }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePDF();
+});
+
+/* ─── SCROLL REVEAL ─── */
+const revealEls = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(function(el) {
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
