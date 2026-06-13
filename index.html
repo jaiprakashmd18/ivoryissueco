@@ -222,6 +222,9 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
 .port-cat{display:inline-block;font-family:var(--ff-sans);font-size:var(--fs-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:var(--sp-2)}
 .port-info h3{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;color:var(--cream);margin-bottom:var(--sp-2)}
 .port-info p{font-size:var(--fs-xs);color:rgba(250,246,239,.7);line-height:1.6;margin-bottom:var(--sp-4)}
+.port-btn-row{display:flex;gap:var(--sp-2);flex-wrap:wrap}
+.btn-sample{display:inline-flex;align-items:center;gap:4px;padding:.55em 1.1em;border-radius:var(--radius);font-size:var(--fs-xs);font-weight:500;letter-spacing:.04em;border:1.5px solid rgba(250,246,239,.45);color:var(--cream);background:transparent;transition:all var(--dur-fast);white-space:nowrap;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.btn-sample:hover{background:rgba(250,246,239,.12);border-color:var(--cream)}
 
 /* ═══ Pricing ═══ */
 .pricing{background:var(--cream)}
@@ -626,7 +629,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Birthday Magazine</span>
             <h3>The Golden Year</h3>
             <p>A stunning birthday celebration transformed into a premium editorial magazine.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="pdf/Birthday.pdf" target="_blank" rel="noopener" class="btn-sample">View Sample ↗</a>
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
@@ -640,7 +646,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Anniversary Magazine</span>
             <h3>Love Story</h3>
             <p>Celebrating years of love with an editorial magazine that tells your journey.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="pdf/Anniversary.pdf" target="_blank" rel="noopener" class="btn-sample">View Sample ↗</a>
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
@@ -654,7 +663,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Main Character Magazine</span>
             <h3>Main Character Era</h3>
             <p>Because everyone deserves a magazine that celebrates them.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="pdf/Main character.pdf" target="_blank" rel="noopener" class="btn-sample">View Sample ↗</a>
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
@@ -668,7 +680,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Farewell Magazine</span>
             <h3>Until We Meet Again</h3>
             <p>Send someone off with a beautiful farewell magazine full of memories.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="pdf/Farewell.pdf" target="_blank" rel="noopener" class="btn-sample">View Sample ↗</a>
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
@@ -686,7 +701,9 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Friendship Magazine</span>
             <h3>The Squad Files</h3>
             <p>Celebrate your friendship group with a magazine they'll treasure forever.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
@@ -704,7 +721,9 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
             <span class="port-cat">Custom Magazine</span>
             <h3>Your Story, Your Way</h3>
             <p>Completely custom magazine for any occasion, theme, or person.</p>
-            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            <div class="port-btn-row">
+              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+            </div>
           </div>
         </div>
       </article>
