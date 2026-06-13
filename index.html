@@ -42,6 +42,7 @@
         <a href="#works" class="nav-link" role="menuitem">Our Works</a>
         <a href="#pricing" class="nav-link" role="menuitem">Pricing</a>
         <a href="#how-it-works" class="nav-link" role="menuitem">How It Works</a>
+        <a href="#payment" class="nav-link" role="menuitem">Payment</a>
         <a href="#reviews" class="nav-link" role="menuitem">Reviews</a>
         <a href="#order" class="nav-cta" role="menuitem">Order Now</a>
       </div>
@@ -522,63 +523,128 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════ ORDER / PAYMENT -->
+  <!-- ═══════════════════════════════════════════ PAYMENT SECTION -->
+  <section id="payment" class="payment-sec sec-pad sec-dark">
+    <div class="container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow sec-eyebrow--light">Payment</p>
+        <h2 class="sec-heading sec-heading--light">How to <em>Pay</em></h2>
+        <p class="sec-sub sec-sub--light">Choose any UPI method — fast, secure, and instant</p>
+      </div>
+
+      <div class="pay-full reveal">
+
+        <!-- UPI method icons row -->
+        <div class="pay-methods-row">
+          <div class="pay-method-card">
+            <div class="pmc-icon pmc-gpay">G Pay</div>
+            <span>Google Pay</span>
+          </div>
+          <div class="pay-method-card">
+            <div class="pmc-icon pmc-phonepe">Pe</div>
+            <span>PhonePe</span>
+          </div>
+          <div class="pay-method-card">
+            <div class="pmc-icon pmc-paytm">Pt</div>
+            <span>Paytm</span>
+          </div>
+          <div class="pay-method-card">
+            <div class="pmc-icon pmc-bhim">B</div>
+            <span>BHIM UPI</span>
+          </div>
+          <div class="pay-method-card">
+            <div class="pmc-icon pmc-upi">UPI</div>
+            <span>Any UPI App</span>
+          </div>
+        </div>
+
+        <!-- QR + UPI ID row -->
+        <div class="pay-center-row">
+          <!-- QR Code -->
+          <div class="pay-qr-card">
+            <p class="pay-qr-label">Scan QR Code</p>
+            <div class="pay-qr-box">
+              <div class="qr-mock qr-mock--large" aria-label="Payment QR code — replace with your actual QR image">
+                <div class="qr-corner qr-corner--tl"></div>
+                <div class="qr-corner qr-corner--tr"></div>
+                <div class="qr-corner qr-corner--bl"></div>
+                <div class="qr-inner-grid qr-inner-grid--lg">
+                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
+                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell qr-cell--fill"></div>
+                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
+                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
+                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+                </div>
+                <div class="qr-brand-mark">✦</div>
+              </div>
+            </div>
+            <p class="pay-qr-note">📌 Replace with your actual UPI QR image</p>
+          </div>
+
+          <!-- Divider -->
+          <div class="pay-or-divider" aria-hidden="true">
+            <div class="pay-or-line"></div>
+            <span>OR</span>
+            <div class="pay-or-line"></div>
+          </div>
+
+          <!-- UPI ID -->
+          <div class="pay-upi-card">
+            <p class="pay-qr-label">Pay Using UPI ID</p>
+            <div class="pay-upi-display">
+              <span class="pay-upi-id" id="upiId">orders@ivoryissueco</span>
+              <button class="copy-btn-lg" onclick="copyUPI()" aria-label="Copy UPI ID">
+                <span>⧉</span> Copy ID
+              </button>
+            </div>
+            <div class="pay-steps">
+              <div class="pay-step-item">
+                <span class="psi-num">1</span>
+                <span>Open any UPI app (GPay / PhonePe / Paytm)</span>
+              </div>
+              <div class="pay-step-item">
+                <span class="psi-num">2</span>
+                <span>Send to UPI ID: <strong>orders@ivoryissueco</strong></span>
+              </div>
+              <div class="pay-step-item">
+                <span class="psi-num">3</span>
+                <span>Take a screenshot of the payment</span>
+              </div>
+              <div class="pay-step-item">
+                <span class="psi-num">4</span>
+                <span>Upload the screenshot in the Order Form below</span>
+              </div>
+            </div>
+            <a href="#order" class="btn btn-gold" style="margin-top:1.5rem;">
+              Go to Order Form →
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom notes -->
+        <div class="pay-bottom-notes">
+          <div class="pbn-item">✦ Payment confirms your order slot</div>
+          <div class="pbn-item">✦ Orders processed within 24 hours</div>
+          <div class="pbn-item">✦ Digital preview shared in 24–48 hours</div>
+          <div class="pbn-item">✦ For help, WhatsApp us immediately</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ ORDER FORM -->
   <section id="order" class="order sec-pad">
     <div class="container">
       <div class="sec-header reveal">
         <p class="sec-eyebrow">Place Your Order</p>
         <h2 class="sec-heading">Order Your <em>Magazine</em></h2>
-        <p class="sec-sub">Fill the form below to begin crafting your masterpiece</p>
+        <p class="sec-sub">Fill the form below — we'll contact you on WhatsApp within 2 hours</p>
       </div>
-      <div class="order-grid reveal">
-
-        <!-- Payment info panel -->
-        <aside class="pay-panel">
-          <h3 class="pay-panel-title">Payment Methods</h3>
-          <div class="upi-methods">
-            <div class="upi-chip upi-chip--gpay"><span>G</span>Google Pay</div>
-            <div class="upi-chip upi-chip--phonepe"><span>Pe</span>PhonePe</div>
-            <div class="upi-chip upi-chip--paytm"><span>Pt</span>Paytm</div>
-            <div class="upi-chip upi-chip--bhim"><span>B</span>BHIM</div>
-            <div class="upi-chip upi-chip--upi"><span>U</span>Any UPI</div>
-          </div>
-
-          <div class="upi-id-wrap">
-            <p class="upi-label">UPI ID</p>
-            <div class="upi-id-row">
-              <span class="upi-id-text" id="upiId">orders@ivoryissueco</span>
-              <button class="copy-btn" onclick="copyUPI()" aria-label="Copy UPI ID">
-                <span class="copy-icon">⧉</span> Copy
-              </button>
-            </div>
-          </div>
-
-          <div class="qr-wrap">
-            <div class="qr-box">
-              <div class="qr-mock" aria-label="QR code placeholder — replace with actual QR image">
-                <div class="qr-corner qr-corner--tl"></div>
-                <div class="qr-corner qr-corner--tr"></div>
-                <div class="qr-corner qr-corner--bl"></div>
-                <div class="qr-inner-grid">
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div>
-                  <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                </div>
-                <div class="qr-label-text">Scan to Pay</div>
-              </div>
-            </div>
-            <p class="qr-note">Replace the QR above with your actual payment QR code</p>
-          </div>
-
-          <div class="pay-notes">
-            <p>✦ Upload payment screenshot in the form</p>
-            <p>✦ Orders processed within 24 hours</p>
-            <p>✦ Preview shared in 24–48 hours</p>
-          </div>
-        </aside>
+      <div class="order-form-only reveal">
 
         <!-- Order form -->
         <div class="order-form-wrap">
@@ -890,6 +956,7 @@
               <li><a href="#works">Our Works</a></li>
               <li><a href="#pricing">Pricing</a></li>
               <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#payment">Payment</a></li>
               <li><a href="#reviews">Reviews</a></li>
               <li><a href="#order">Order Now</a></li>
             </ul>
