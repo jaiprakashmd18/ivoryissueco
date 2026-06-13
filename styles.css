@@ -518,9 +518,10 @@ input, select, textarea, button { font-family: inherit; }
   background: rgba(13,11,9,0.6);
   backdrop-filter: blur(4px);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--dur-base);
 }
-.nav-overlay.visible { opacity: 1; }
+.nav-overlay.visible { opacity: 1; pointer-events: auto; }
 
 /* ─── Hero ───────────────────────────────────────────────────── */
 .hero {
