@@ -2263,6 +2263,154 @@ input, select, textarea, button { font-family: inherit; }
   * { box-shadow: none !important; }
 }
 
+/* ─── Pricing — new elements ────────────────────────────────── */
+.price-btns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: auto;
+}
+
+.btn-wa-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.55em 1em;
+  background: rgba(37,211,102,0.1);
+  color: #1A8A44;
+  border: 1px solid rgba(37,211,102,0.3);
+  border-radius: var(--radius);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--dur-base);
+  text-decoration: none;
+}
+.btn-wa-mini:hover {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+  transform: translateY(-1px);
+}
+.btn-wa-mini--light {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.2);
+}
+.btn-wa-mini--light:hover {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+}
+
+/* ─── Dynamic Price Preview in Order Form ────────────────────── */
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.price-preview {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4) var(--sp-6);
+  animation: slide-down 0.4s var(--ease-out);
+}
+.pp-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.pp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pp-label {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+.pp-type {
+  font-family: var(--ff-serif);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--cream);
+}
+.pp-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.pp-amount strong {
+  font-family: var(--ff-serif);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.pp-amount span {
+  font-size: var(--fs-xs);
+  color: var(--muted-light);
+}
+
+/* Highlight animation when form is pre-filled */
+@keyframes field-highlight {
+  0%   { box-shadow: 0 0 0 0 rgba(184,151,90,0.5); }
+  50%  { box-shadow: 0 0 0 6px rgba(184,151,90,0.15); }
+  100% { box-shadow: 0 0 0 0 rgba(184,151,90,0); }
+}
+.form-field.prefilled {
+  border-color: var(--gold);
+  animation: field-highlight 1s ease-out;
+}
+
+/* ─── Scroll To Top Button ────────────────────────────────────── */
+.scroll-top {
+  position: fixed;
+  bottom: calc(var(--sp-8) + 60px);
+  right: var(--sp-8);
+  z-index: 899;
+  width: 44px;
+  height: 44px;
+  background: rgba(28,25,23,0.9);
+  color: var(--gold);
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-base), transform var(--dur-base), background var(--dur-fast);
+  pointer-events: none;
+}
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.scroll-top:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .scroll-top { bottom: calc(var(--sp-6) + 70px); right: var(--sp-4); width: 40px; height: 40px; }
+  .price-btns { gap: var(--sp-2); }
+}
+
 /* ─── Reduced Motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
