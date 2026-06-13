@@ -42,10 +42,12 @@
 html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:var(--ff-sans);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
 img{max-width:100%;height:auto;display:block}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
+a{text-decoration:none;color:inherit;touch-action:manipulation}
+button{cursor:pointer;border:none;background:none;font-family:inherit;touch-action:manipulation}
 ul{list-style:none}
 input,select,textarea,button{font-family:inherit}
+/* remove 300ms tap delay on all interactive elements */
+a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 
 /* ═══ Keyframes ═══ */
 @keyframes float-a{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(-3deg)}}
@@ -132,14 +134,16 @@ input,select,textarea,button{font-family:inherit}
 .nav-toggle.open span:nth-child(2){opacity:0;width:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* ★ KEY FIX: overlay never blocks clicks unless menu is open */
-.nav-overlay{display:none;position:fixed;inset:0;z-index:998;background:rgba(13,11,9,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none !important;transition:opacity var(--dur-base)}
-.nav-overlay.visible{opacity:1;pointer-events:auto !important}
+/* ★ KEY FIX: overlay is display:none by default — JS sets display:block only when opening.
+   backdrop-filter is ONLY on .visible to avoid an iOS Safari bug where backdrop-filter
+   causes pointer-events:none to be ignored, letting the overlay eat all taps. */
+.nav-overlay{display:none;position:fixed;inset:0;z-index:998;background:rgba(13,11,9,.6);opacity:0;pointer-events:none;transition:opacity var(--dur-base)}
+.nav-overlay.visible{opacity:1;pointer-events:auto;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 
 /* ═══ Hero ═══ */
 .hero{min-height:100svh;background:var(--ink);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:var(--nav-h)}
 .hero-bg{position:absolute;inset:0;pointer-events:none}
-.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.hero-grain{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 .hero-glow{position:absolute;top:20%;right:5%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(184,151,90,.06) 0%,transparent 65%);pointer-events:none}
 .hero-container{position:relative;z-index:2;max-width:var(--container);margin:0 auto;padding:var(--sp-16) var(--container-pad);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:var(--sp-16);width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:var(--sp-2);font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--sp-6)}
@@ -423,7 +427,7 @@ input,select,textarea,button{font-family:inherit}
   .nav-link{font-size:var(--fs-md);padding:var(--sp-3) 0;width:100%;border-bottom:1px solid rgba(255,255,255,.05)}
   .nav-cta{margin-top:var(--sp-4);width:100%;text-align:center;padding:.8em 1.4em;font-size:var(--fs-sm)}
   .nav-toggle{display:flex}
-  .nav-overlay{display:block}
+  /* nav-overlay display is controlled exclusively by JS — never set display:block here */
 }
 @media(max-width:768px){
   :root{--nav-h:62px}
@@ -1182,6 +1186,8 @@ function initMobileMenu(){
   if(!toggle||!menu||!overlay)return;
 
   var open=function(){
+    overlay.style.display='block';   /* make it exist in layout */
+    overlay.getBoundingClientRect(); /* force reflow so transition fires */
     menu.classList.add('open');
     overlay.classList.add('visible');
     toggle.classList.add('open');
@@ -1194,6 +1200,10 @@ function initMobileMenu(){
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
+    /* return overlay to display:none after transition so it truly vanishes */
+    setTimeout(function(){
+      if(!overlay.classList.contains('visible'))overlay.style.display='none';
+    },320);
   };
 
   toggle.addEventListener('click',function(e){
