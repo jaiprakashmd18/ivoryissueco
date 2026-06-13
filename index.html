@@ -6,957 +6,1454 @@
   <meta name="theme-color" content="#0D0B09">
   <title>Ivory Issue Co — Turn Your Memories Into A Magazine</title>
   <meta name="description" content="Ivory Issue Co transforms your favorite memories into beautifully designed magazine-style keepsakes. Birthday, anniversary, farewell & more. Premium quality, pan-India delivery.">
-  <meta name="keywords" content="personalized magazine gift India, memory magazine, birthday magazine gift, anniversary magazine, farewell magazine, custom magazine keepsake">
-  <meta property="og:title" content="Ivory Issue Co — Turn Your Memories Into A Magazine">
-  <meta property="og:description" content="Transform your memories into beautiful personalized magazine gifts. Premium editorial design, high-quality printing, pan-India delivery.">
-  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* ═══ IVORY ISSUE CO — Design System ═══ */
+:root {
+  --ink:#0D0B09;--ink-mid:#1C1917;--ink-soft:#2C2924;
+  --gold:#B8975A;--gold-light:#D4B47A;--gold-pale:#EAD9B4;
+  --cream:#FAF6EF;--ivory:#F5EEE3;--beige:#EAE0D0;--beige-mid:#D8CCBA;
+  --white:#FFFFFF;--muted:#8A8070;--muted-light:#B0A898;
+  --border:#DDD5C4;--border-dark:#3C3830;
+  --ff-serif:'Playfair Display',Georgia,serif;
+  --ff-elegant:'Cormorant Garamond',Georgia,serif;
+  --ff-sans:'DM Sans',system-ui,sans-serif;
+  --fs-xs:clamp(0.75rem,1.5vw,0.875rem);
+  --fs-sm:clamp(0.875rem,2vw,1rem);
+  --fs-base:clamp(1rem,2.5vw,1.125rem);
+  --fs-md:clamp(1.125rem,3vw,1.375rem);
+  --fs-lg:clamp(1.375rem,4vw,1.75rem);
+  --fs-xl:clamp(1.75rem,5vw,2.5rem);
+  --fs-2xl:clamp(2.25rem,6vw,3.5rem);
+  --fs-hero:clamp(3.5rem,10vw,6.5rem);
+  --sp-1:.25rem;--sp-2:.5rem;--sp-3:.75rem;--sp-4:1rem;--sp-6:1.5rem;
+  --sp-8:2rem;--sp-10:2.5rem;--sp-12:3rem;--sp-16:4rem;--sp-20:5rem;--sp-24:6rem;
+  --ease-out:cubic-bezier(0.16,1,0.3,1);--ease-in-out:cubic-bezier(0.45,0,0.55,1);
+  --dur-fast:180ms;--dur-base:300ms;--dur-slow:600ms;--dur-slower:900ms;
+  --shadow-sm:0 2px 8px rgba(13,11,9,0.06);--shadow-md:0 8px 24px rgba(13,11,9,0.09);
+  --shadow-lg:0 20px 48px rgba(13,11,9,0.14);--shadow-xl:0 40px 80px rgba(13,11,9,0.20);
+  --shadow-mag:-4px 2px 12px rgba(0,0,0,0.5),12px 16px 40px rgba(0,0,0,0.45),24px 24px 60px rgba(0,0,0,0.25);
+  --container:1200px;--container-pad:clamp(1.25rem,5vw,2.5rem);
+  --radius:6px;--radius-md:12px;--radius-lg:20px;--radius-full:9999px;--nav-h:72px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--ff-sans);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
+input,select,textarea,button{font-family:inherit}
+
+/* ═══ Keyframes ═══ */
+@keyframes float-a{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(-3deg)}}
+@keyframes float-b{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-24px) rotate(2deg)}}
+@keyframes float-c{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(-1deg)}}
+@keyframes preloader-bar{from{width:0%}to{width:100%}}
+@keyframes scroll-thumb{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(12px);opacity:.4}}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.7)}}
+
+/* ═══ Utilities ═══ */
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--container-pad)}
+.sec-pad{padding:var(--sp-24) 0}
+.sec-dark{background:var(--ink)}
+.sec-alt{background:var(--ivory)}
+.mt-lg{margin-top:var(--sp-8);display:inline-block}
+.sec-header{text-align:center;margin-bottom:var(--sp-16)}
+.sec-eyebrow{display:inline-block;font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--sp-3)}
+.sec-eyebrow--light{color:var(--gold-light)}
+.sec-heading{font-family:var(--ff-serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:var(--sp-4)}
+.sec-heading em{font-style:italic;color:var(--gold)}
+.sec-heading--light{color:var(--cream)}
+.sec-heading--light em{color:var(--gold-light)}
+.sec-sub{font-size:var(--fs-base);color:var(--muted);max-width:520px;margin:0 auto}
+.sec-sub--light{color:var(--muted-light)}
+
+/* ═══ Buttons ═══ */
+.btn{display:inline-flex;align-items:center;gap:var(--sp-2);padding:.85em 2em;border-radius:var(--radius);font-family:var(--ff-sans);font-size:var(--fs-sm);font-weight:500;letter-spacing:.04em;transition:all var(--dur-base) var(--ease-out);position:relative;overflow:hidden;white-space:nowrap;cursor:pointer}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);opacity:0;transition:opacity var(--dur-fast)}
+.btn:hover::after{opacity:1}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn-dark{background:var(--ink);color:var(--cream);border:1.5px solid var(--ink)}
+.btn-dark:hover{background:var(--ink-soft);transform:translateY(-2px);box-shadow:0 8px 20px rgba(13,11,9,.3)}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);color:var(--ink);border:1.5px solid transparent;font-weight:600}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,151,90,.4)}
+.btn-cream{background:var(--cream);color:var(--ink);border:1.5px solid var(--cream)}
+.btn-cream:hover{background:var(--white);transform:translateY(-2px)}
+.btn-outline-cream{background:transparent;color:var(--cream);border:1.5px solid rgba(250,246,239,.5)}
+.btn-outline-cream:hover{background:rgba(250,246,239,.1);border-color:var(--cream);transform:translateY(-2px)}
+.btn-ig{background:linear-gradient(135deg,#405de6,#5851db,#833ab4,#c13584,#e1306c,#fd1d1d);color:#fff;border:none;padding:.9em 2.5em;font-size:var(--fs-base)}
+.btn-ig:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(193,53,132,.35)}
+.btn-full{width:100%;justify-content:center}
+.btn-sm{padding:.6em 1.4em;font-size:var(--fs-xs)}
+.btn-submit{font-size:var(--fs-base);padding:1em 2em}
+.btn-arrow{transition:transform var(--dur-base)}
+.btn-submit:hover .btn-arrow{transform:translateX(4px)}
+
+/* ═══ Reveal animations ═══ */
+.reveal,.fade-up{opacity:0;transform:translateY(40px);transition:opacity var(--dur-slower) var(--ease-out),transform var(--dur-slower) var(--ease-out)}
+.reveal.visible,.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(1){transition-delay:100ms}
+.fade-up:nth-child(2){transition-delay:200ms}
+.fade-up:nth-child(3){transition-delay:300ms}
+.fade-up:nth-child(4){transition-delay:400ms}
+.fade-up:nth-child(5){transition-delay:500ms}
+
+/* ═══ Preloader ═══ */
+.preloader{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:opacity .6s var(--ease-out),visibility .6s}
+.preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-inner{text-align:center}
+.preloader-eyebrow{font-family:var(--ff-sans);font-size:var(--fs-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--sp-4)}
+.preloader-logo{display:flex;align-items:center;gap:var(--sp-4);font-family:var(--ff-serif);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;letter-spacing:.1em;color:var(--cream);margin-bottom:var(--sp-8)}
+.preloader-dot{color:var(--gold);font-size:.7em;animation:pulse-dot 1.5s ease infinite}
+.preloader-bar-track{width:200px;height:1px;background:var(--border-dark);margin:0 auto;overflow:hidden}
+.preloader-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));animation:preloader-bar 2s var(--ease-in-out) forwards}
+
+/* ═══ Navigation ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);transition:background var(--dur-base),box-shadow var(--dur-base)}
+.nav.scrolled{background:rgba(13,11,9,.95);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(13,11,9,.3);border-bottom:1px solid var(--border-dark)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 var(--container-pad);height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-8)}
+.nav-brand{display:flex;align-items:center;gap:var(--sp-3);flex-shrink:0}
+.nav-brand-mark{width:36px;height:36px;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-weight:700;font-size:1.1rem;color:var(--gold)}
+.nav-brand-name{font-family:var(--ff-serif);font-size:clamp(.75rem,2vw,.9rem);font-weight:700;letter-spacing:.12em;color:var(--cream)}
+.nav-menu{display:flex;align-items:center;gap:var(--sp-8)}
+.nav-link{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:400;letter-spacing:.06em;color:rgba(250,246,239,.75);transition:color var(--dur-fast);position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform var(--dur-base) var(--ease-out)}
+.nav-link:hover{color:var(--cream)}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link.active{color:var(--cream)}
+.nav-cta{background:var(--gold);color:var(--ink);padding:.5em 1.4em;border-radius:var(--radius);font-size:var(--fs-xs);font-weight:600;letter-spacing:.06em;transition:all var(--dur-base) var(--ease-out)}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 6px 16px rgba(184,151,90,.35)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;width:28px;padding:4px 0;z-index:1002;position:relative}
+.nav-toggle span{display:block;width:100%;height:1.5px;background:var(--cream);transition:transform var(--dur-base),opacity var(--dur-base),width var(--dur-base);transform-origin:center}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0;width:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ★ KEY FIX: overlay never blocks clicks unless menu is open */
+.nav-overlay{display:none;position:fixed;inset:0;z-index:998;background:rgba(13,11,9,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none !important;transition:opacity var(--dur-base)}
+.nav-overlay.visible{opacity:1;pointer-events:auto !important}
+
+/* ═══ Hero ═══ */
+.hero{min-height:100svh;background:var(--ink);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:var(--nav-h)}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.hero-glow{position:absolute;top:20%;right:5%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(184,151,90,.06) 0%,transparent 65%);pointer-events:none}
+.hero-container{position:relative;z-index:2;max-width:var(--container);margin:0 auto;padding:var(--sp-16) var(--container-pad);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:var(--sp-16);width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:var(--sp-2);font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--sp-6)}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse-dot 2s ease infinite;flex-shrink:0}
+.hero-heading{font-family:var(--ff-serif);font-size:var(--fs-hero);font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--cream);margin-bottom:var(--sp-6)}
+.hero-heading em{font-style:italic;color:var(--gold-light);display:block}
+.hero-sub{font-size:var(--fs-md);color:rgba(250,246,239,.65);line-height:1.6;margin-bottom:var(--sp-10);max-width:420px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--sp-4);margin-bottom:var(--sp-12)}
+.hero-stats{display:flex;align-items:center;gap:var(--sp-6);flex-wrap:wrap}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat strong{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;color:var(--cream);line-height:1}
+.hero-stat span{font-size:var(--fs-xs);color:var(--muted-light);letter-spacing:.06em}
+.hero-stat-sep{width:1px;height:32px;background:var(--border-dark);flex-shrink:0}
+.hero-visual{display:flex;justify-content:center;align-items:center;height:100%;min-height:500px}
+.mags-stage{position:relative;width:320px;height:460px}
+.mag-wrap{position:absolute;transition:transform var(--dur-slow)}
+.mag-wrap--front{bottom:0;left:50%;transform:translateX(-50%);z-index:3;animation:float-b 5s ease-in-out infinite}
+.mag-wrap--back{top:10%;left:-5%;z-index:1;animation:float-a 6s ease-in-out infinite .8s}
+.mag-wrap--side{top:5%;right:-5%;z-index:2;animation:float-c 7s ease-in-out infinite 1.6s}
+.magazine-book{position:relative;width:180px;height:255px;border-radius:2px 8px 8px 2px;box-shadow:var(--shadow-mag);overflow:hidden;cursor:pointer;transition:transform var(--dur-slow) var(--ease-out)}
+.magazine-book--primary{width:210px;height:297px}
+.magazine-book:hover{transform:scale(1.04) !important}
+.mag-spine{position:absolute;top:0;left:0;bottom:0;width:14px;background:linear-gradient(to right,rgba(0,0,0,.6),rgba(0,0,0,.2),transparent);z-index:3;border-radius:2px 0 0 2px}
+.mag-pages{position:absolute;top:0;right:-6px;bottom:0;width:8px;background:linear-gradient(to right,#ccc 0%,#eee 30%,#ddd 60%,#bbb 100%);border-radius:0 4px 4px 0;box-shadow:3px 0 6px rgba(0,0,0,.2)}
+.mag-cover-face{position:absolute;inset:0;overflow:hidden}
+.mag-cover-face img{width:100%;height:100%;object-fit:cover}
+.mag-cover-bar{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:var(--sp-6) var(--sp-3) var(--sp-3);display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--ff-sans);font-size:.5rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.hero-scroll{position:absolute;bottom:var(--sp-8);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);color:rgba(250,246,239,.4);font-size:var(--fs-xs);letter-spacing:.15em;text-transform:uppercase}
+.scroll-track{width:1px;height:48px;background:rgba(250,246,239,.15);position:relative;overflow:hidden}
+.scroll-thumb{position:absolute;top:0;width:100%;height:40%;background:var(--gold);animation:scroll-thumb 2s ease-in-out infinite}
+
+/* ═══ About ═══ */
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-16);align-items:center}
+.about-text .sec-heading{text-align:left;margin-bottom:var(--sp-6)}
+.about-text .sec-eyebrow{display:block;margin-bottom:var(--sp-3);text-align:left}
+.about-body{font-size:var(--fs-base);color:var(--muted);line-height:1.8;margin-bottom:var(--sp-4)}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);display:flex;gap:var(--sp-4);transition:transform var(--dur-base),box-shadow var(--dur-base)}
+.about-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.about-card-icon{font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px}
+.about-card h3{font-family:var(--ff-serif);font-size:var(--fs-sm);font-weight:600;margin-bottom:var(--sp-1);color:var(--ink)}
+.about-card p{font-size:var(--fs-xs);color:var(--muted);line-height:1.6}
+
+/* ═══ Portfolio ═══ */
+.works{background:var(--ink)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:var(--sp-4)}
+.port-card{position:relative;border-radius:var(--radius-md);overflow:hidden;cursor:pointer;background:var(--ink-mid);min-height:280px;transition:transform var(--dur-base) var(--ease-out)}
+.port-card:hover{transform:scale(1.01)}
+.port-card.port-tall{grid-row:span 2;min-height:580px}
+.port-figure{position:absolute;inset:0;margin:0;overflow:hidden}
+.port-figure img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out)}
+.port-figure .port-img-alt{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.port-card:hover .port-figure img:first-child{opacity:0}
+.port-card:hover .port-figure .port-img-alt{opacity:1}
+.port-card:hover .port-figure img{transform:scale(1.06)}
+.port-figure--gradient{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.port-figure--friendship{background:linear-gradient(135deg,#4A2010 0%,#8A3820 40%,#C45030 70%,#E07050 100%)}
+.port-figure--custom{background:linear-gradient(135deg,#1A1A1A 0%,#3A3530 40%,#5A5248 70%,#7A7268 100%)}
+.port-mag-placeholder{text-align:center;padding:var(--sp-8)}
+.pmp-vol{display:block;font-family:var(--ff-sans);font-size:var(--fs-xs);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:var(--sp-3)}
+.pmp-title{font-family:var(--ff-serif);font-size:var(--fs-xl);font-weight:800;line-height:1;color:var(--cream);margin-bottom:var(--sp-3)}
+.pmp-sub{font-family:var(--ff-sans);font-size:var(--fs-xs);color:rgba(255,255,255,.45);letter-spacing:.1em}
+
+/* ★ KEY FIX: overlay never blocks clicks when invisible */
+.port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,11,9,.95) 0%,rgba(13,11,9,.4) 50%,transparent 100%);display:flex;align-items:flex-end;padding:var(--sp-6);opacity:0;pointer-events:none;transition:opacity var(--dur-base) var(--ease-out)}
+.port-card:hover .port-overlay{opacity:1;pointer-events:auto}
+.port-cat{display:inline-block;font-family:var(--ff-sans);font-size:var(--fs-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:var(--sp-2)}
+.port-info h3{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;color:var(--cream);margin-bottom:var(--sp-2)}
+.port-info p{font-size:var(--fs-xs);color:rgba(250,246,239,.7);line-height:1.6;margin-bottom:var(--sp-4)}
+
+/* ═══ Pricing ═══ */
+.pricing{background:var(--cream)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-6);position:relative;transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base)}
+.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.price-card--hero{background:var(--ink);border-color:var(--gold);color:var(--cream)}
+.price-hero-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.3em 1.2em;border-radius:var(--radius);white-space:nowrap}
+.price-card-head{display:flex;align-items:center;gap:var(--sp-3)}
+.price-icon{font-size:1.5rem}
+.price-card-head h3{font-family:var(--ff-serif);font-size:var(--fs-md);font-weight:700;color:var(--ink)}
+.price-card--hero .price-card-head h3{color:var(--cream)}
+.price-opts{display:flex;gap:var(--sp-3)}
+.price-opts--single{justify-content:center}
+.price-opt{flex:1;display:flex;flex-direction:column;align-items:center;gap:var(--sp-1);padding:var(--sp-4) var(--sp-3);border:1px solid var(--border);border-radius:var(--radius-md);text-align:center;position:relative;transition:border-color var(--dur-fast)}
+.price-card--hero .price-opt{border-color:var(--border-dark)}
+.price-opt span:first-child{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.price-card--hero .price-opt span:first-child{color:var(--muted-light)}
+.price-opt strong{font-family:var(--ff-serif);font-size:var(--fs-xl);font-weight:700;color:var(--ink);line-height:1}
+.price-card--hero .price-opt strong{color:var(--cream)}
+.price-opt--hi{border-color:var(--gold);background:rgba(184,151,90,.04)}
+.price-card--hero .price-opt--hi{background:rgba(184,151,90,.1)}
+.price-badge{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.price-features{display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
+.price-features li{display:flex;align-items:center;gap:var(--sp-3);font-size:var(--fs-sm);color:var(--muted)}
+.price-features li span{color:var(--gold);font-weight:700;flex-shrink:0}
+.price-card--hero .price-features li{color:rgba(250,246,239,.7)}
+
+/* ═══ How It Works ═══ */
+.hiw{background:var(--ink-mid)}
+.hiw-grid{display:grid;grid-template-columns:repeat(6,1fr);align-items:start;gap:var(--sp-6)}
+.hiw-step{text-align:center;padding:var(--sp-4)}
+.hiw-num{font-family:var(--ff-elegant);font-size:clamp(3rem,5vw,4.5rem);font-weight:300;color:rgba(184,151,90,.15);line-height:1;margin-bottom:var(--sp-3);letter-spacing:-.02em}
+.hiw-icon{font-size:1.75rem;margin-bottom:var(--sp-4);display:block}
+.hiw-step h3{font-family:var(--ff-serif);font-size:var(--fs-sm);font-weight:700;color:var(--cream);margin-bottom:var(--sp-2);line-height:1.3}
+.hiw-step p{font-size:var(--fs-xs);color:var(--muted-light);line-height:1.6}
+
+/* ═══ Order / Payment ═══ */
+.order{background:var(--ivory)}
+.order-grid{display:grid;grid-template-columns:380px 1fr;gap:var(--sp-10);align-items:start}
+.pay-panel{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--sp-8);position:sticky;top:calc(var(--nav-h) + var(--sp-6))}
+.pay-panel-title{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;color:var(--ink);margin-bottom:var(--sp-6);padding-bottom:var(--sp-4);border-bottom:1px solid var(--border)}
+.upi-methods{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-6)}
+.upi-chip{display:flex;align-items:center;gap:var(--sp-2);padding:.4em .9em;border-radius:var(--radius);font-size:var(--fs-xs);font-weight:500;border:1px solid var(--border);color:var(--ink);background:var(--cream)}
+.upi-chip span{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.upi-chip--gpay span{background:#4285F4}
+.upi-chip--phonepe span{background:#5F259F}
+.upi-chip--paytm span{background:#00BAF2}
+.upi-chip--bhim span{background:#0066CC}
+.upi-chip--upi span{background:var(--ink)}
+.upi-label{font-size:var(--fs-xs);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--sp-2)}
+.upi-id-wrap{margin-bottom:var(--sp-6)}
+.upi-id-row{display:flex;align-items:center;gap:var(--sp-3);background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:var(--sp-3) var(--sp-4)}
+.upi-id-text{flex:1;font-family:var(--ff-sans);font-size:var(--fs-sm);font-weight:500;color:var(--ink);word-break:break-all}
+.copy-btn{display:flex;align-items:center;gap:var(--sp-1);padding:.35em .8em;background:var(--ink);color:var(--cream);border-radius:4px;font-size:var(--fs-xs);font-weight:500;white-space:nowrap;transition:background var(--dur-fast);flex-shrink:0;cursor:pointer}
+.copy-btn:hover{background:var(--ink-soft)}
+.qr-wrap{margin-bottom:var(--sp-6)}
+.qr-box{display:flex;justify-content:center;margin-bottom:var(--sp-3)}
+.qr-mock{width:160px;height:170px;background:var(--cream);border:2px solid var(--border);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-4);gap:var(--sp-2);position:relative}
+.qr-corner{position:absolute;width:16px;height:16px;border-color:var(--gold);border-style:solid}
+.qr-corner--tl{top:8px;left:8px;border-width:2px 0 0 2px}
+.qr-corner--tr{top:8px;right:8px;border-width:2px 2px 0 0}
+.qr-corner--bl{bottom:8px;left:8px;border-width:0 0 2px 2px}
+.qr-inner-grid{display:grid;grid-template-columns:repeat(3,14px);grid-template-rows:repeat(6,8px);gap:2px}
+.qr-cell{background:rgba(184,151,90,.15);border-radius:1px}
+.qr-cell--fill{background:var(--ink)}
+.qr-label-text{font-family:var(--ff-sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.qr-note{text-align:center;font-size:var(--fs-xs);color:var(--muted);font-style:italic}
+.pay-notes{display:flex;flex-direction:column;gap:var(--sp-2);padding-top:var(--sp-4);border-top:1px solid var(--border)}
+.pay-notes p{font-size:var(--fs-xs);color:var(--muted)}
+.order-form-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--sp-8)}
+.order-form{display:flex;flex-direction:column;gap:var(--sp-6)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6)}
+.form-group{display:flex;flex-direction:column;gap:var(--sp-2)}
+.form-label{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:600;letter-spacing:.06em;color:var(--ink);text-transform:uppercase}
+.form-label span{color:var(--gold)}
+.form-field{padding:.8em 1em;border:1.5px solid var(--border);border-radius:var(--radius);font-size:var(--fs-sm);color:var(--ink);background:var(--cream);transition:border-color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast);-webkit-appearance:none;appearance:none}
+.form-field:focus{outline:none;border-color:var(--gold);background:var(--white);box-shadow:0 0 0 3px rgba(184,151,90,.12)}
+.form-field.error{border-color:#C0392B;box-shadow:0 0 0 3px rgba(192,57,43,.1)}
+.select-wrap{position:relative}
+.form-select{padding-right:2.5em;cursor:pointer;width:100%}
+.select-arrow{position:absolute;right:.9em;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.75rem;pointer-events:none}
+.form-textarea{min-height:100px;resize:vertical;line-height:1.6}
+.size-opts{display:flex;gap:var(--sp-3)}
+.size-opt{flex:1;cursor:pointer;display:block}
+.size-opt input[type="radio"]{position:absolute;opacity:0;width:0;height:0}
+.size-opt span{display:flex;align-items:center;justify-content:center;padding:.7em;border:1.5px solid var(--border);border-radius:var(--radius);font-size:var(--fs-sm);font-weight:600;color:var(--muted);background:var(--cream);transition:all var(--dur-fast);text-align:center}
+.size-opt input:checked + span{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.size-opt:hover span{border-color:var(--gold);color:var(--ink)}
+.file-drop{position:relative;border:1.5px dashed var(--beige-mid);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:border-color var(--dur-fast),background var(--dur-fast);background:var(--cream)}
+.file-drop:hover,.file-drop.drag-over{border-color:var(--gold);background:rgba(184,151,90,.04)}
+.file-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.file-drop-ui{display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);padding:var(--sp-8) var(--sp-4);text-align:center}
+.file-up-icon{width:40px;height:40px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--muted)}
+.file-up-text{font-size:var(--fs-sm);font-weight:500;color:var(--ink)}
+.file-up-hint{font-size:var(--fs-xs);color:var(--muted)}
+.file-preview{padding:var(--sp-4);display:flex;align-items:center;gap:var(--sp-3);font-size:var(--fs-sm);color:var(--ink);background:rgba(184,151,90,.06);border-top:1px solid var(--border)}
+.file-preview img{width:48px;height:48px;object-fit:cover;border-radius:4px}
+.form-err{font-size:var(--fs-xs);color:#C0392B;display:none}
+.form-err.show{display:block}
+.form-success{text-align:center;padding:var(--sp-16) var(--sp-8)}
+.success-mark{font-size:2.5rem;color:var(--gold);display:block;margin-bottom:var(--sp-6)}
+.form-success h3{font-family:var(--ff-serif);font-size:var(--fs-xl);font-weight:700;margin-bottom:var(--sp-4);color:var(--ink)}
+.form-success p{font-size:var(--fs-base);color:var(--muted);max-width:400px;margin:0 auto}
+
+/* ═══ Reviews ═══ */
+.reviews{background:var(--ink)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
+.review-card{background:rgba(255,255,255,.04);border:1px solid var(--border-dark);border-radius:var(--radius-lg);padding:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-4);transition:background var(--dur-base),border-color var(--dur-base),transform var(--dur-base)}
+.review-card:hover{background:rgba(255,255,255,.07);border-color:rgba(184,151,90,.3);transform:translateY(-4px)}
+.review-card--large{grid-column:span 2}
+.review-stars{color:var(--gold);font-size:var(--fs-base);letter-spacing:.1em}
+.review-card p{font-family:var(--ff-elegant);font-size:var(--fs-md);font-weight:300;font-style:italic;color:rgba(250,246,239,.85);line-height:1.7;flex:1}
+.review-author{display:flex;align-items:center;gap:var(--sp-3);border-top:1px solid var(--border-dark);padding-top:var(--sp-4)}
+.rev-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:var(--fs-base);font-weight:700;flex-shrink:0}
+.review-author strong{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--cream)}
+.review-author span{font-size:var(--fs-xs);color:var(--muted-light)}
+
+/* ═══ Instagram ═══ */
+.insta{background:var(--cream)}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--sp-2);margin-bottom:var(--sp-10)}
+.ig-cell{aspect-ratio:1;border-radius:var(--radius);position:relative;overflow:hidden;cursor:pointer;display:block}
+.ig-cell--1{background:linear-gradient(135deg,#B8975A 0%,#E8C880 100%)}
+.ig-cell--2{background:linear-gradient(135deg,#2C1A0A 0%,#6A3A18 100%)}
+.ig-cell--3{background:linear-gradient(135deg,#4A2A0A 0%,#A0602A 100%)}
+.ig-cell--4{background:linear-gradient(135deg,#1A1A1A 0%,#4A4040 100%)}
+.ig-cell--5{background:linear-gradient(135deg,#6A4020 0%,#C07840 100%)}
+.ig-cell--6{background:linear-gradient(135deg,#B0906A 0%,#EAD0A8 100%)}
+.ig-overlay-hover{position:absolute;inset:0;background:rgba(13,11,9,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--dur-base);backdrop-filter:blur(2px)}
+.ig-cell:hover .ig-overlay-hover{opacity:1}
+.ig-overlay-hover span{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;color:var(--cream);letter-spacing:.08em;text-align:center;padding:0 var(--sp-3)}
+.ig-cta{display:flex;justify-content:center}
+
+/* ═══ FAQ ═══ */
+.faq{background:var(--ivory)}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);padding:var(--sp-6) 0;font-family:var(--ff-serif);font-size:var(--fs-md);font-weight:600;color:var(--ink);text-align:left;cursor:pointer;transition:color var(--dur-fast)}
+.faq-q:hover{color:var(--gold)}
+.faq-q[aria-expanded="true"]{color:var(--gold)}
+.faq-toggle{font-size:1.25rem;font-weight:300;color:var(--gold);flex-shrink:0;transition:transform var(--dur-base) var(--ease-out);line-height:1}
+.faq-q[aria-expanded="true"] .faq-toggle{transform:rotate(45deg)}
+.faq-a{overflow:hidden;max-height:0;transition:max-height var(--dur-slow) var(--ease-out)}
+.faq-a:not([hidden]){max-height:300px}
+.faq-a[hidden]{display:block !important}
+.faq-a p{font-size:var(--fs-base);color:var(--muted);line-height:1.8;padding-bottom:var(--sp-6);padding-right:var(--sp-10)}
+
+/* ═══ Footer ═══ */
+.footer{background:var(--ink)}
+.footer-top{padding:var(--sp-20) 0 var(--sp-12)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:var(--sp-10)}
+.footer-logo{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;letter-spacing:.1em;color:var(--cream);margin-bottom:var(--sp-2)}
+.footer-tagline{font-family:var(--ff-elegant);font-style:italic;font-size:var(--fs-base);color:var(--gold);margin-bottom:var(--sp-4)}
+.footer-desc{font-size:var(--fs-sm);color:var(--muted-light);line-height:1.7;max-width:300px;margin-bottom:var(--sp-6)}
+.footer-socials{display:flex;gap:var(--sp-3)}
+.footer-social-link{width:38px;height:38px;border:1px solid var(--border-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted-light);font-size:.9rem;transition:all var(--dur-fast)}
+.footer-social-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.footer-col h4{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);margin-bottom:var(--sp-6)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--sp-3)}
+.footer-col ul a{font-size:var(--fs-sm);color:var(--muted-light);transition:color var(--dur-fast)}
+.footer-col ul a:hover{color:var(--gold)}
+.footer-contacts{display:flex;flex-direction:column;gap:var(--sp-4)}
+.footer-contact{display:flex;align-items:center;gap:var(--sp-3);transition:opacity var(--dur-fast)}
+.footer-contact:hover{opacity:.8}
+.footer-contact > span{width:36px;height:36px;border:1px solid var(--border-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;flex-shrink:0}
+.footer-contact strong{display:block;font-size:var(--fs-xs);font-weight:600;color:var(--cream)}
+.footer-contact span:last-child{font-size:var(--fs-xs);color:var(--muted-light)}
+.footer-bottom{border-top:1px solid var(--border-dark);padding:var(--sp-6) 0}
+.footer-bottom .container{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap}
+.footer-bottom p{font-size:var(--fs-xs);color:var(--muted-light)}
+.footer-bottom-tagline{font-family:var(--ff-elegant);font-style:italic;color:var(--gold) !important}
+
+/* ═══ WhatsApp Float ═══ */
+.wa-float{position:fixed;bottom:var(--sp-8);right:var(--sp-8);z-index:900;display:flex;align-items:center;gap:var(--sp-3);padding:.75em 1.4em .75em .85em;background:#25D366;color:#fff;border-radius:var(--radius-full);box-shadow:0 8px 24px rgba(37,211,102,.4);font-size:var(--fs-sm);font-weight:600;transition:all var(--dur-base) var(--ease-out)}
+.wa-float:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 32px rgba(37,211,102,.5)}
+.wa-icon{width:28px;height:28px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-icon svg{width:16px;height:16px}
+.wa-label{letter-spacing:.04em}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .hero-container{grid-template-columns:1fr;text-align:center}
+  .hero-sub,.hero-actions,.hero-stats{margin-left:auto;margin-right:auto}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-visual{margin-top:var(--sp-10);min-height:350px}
+  .mags-stage{width:260px;height:360px}
+  .magazine-book{width:140px;height:198px}
+  .magazine-book--primary{width:165px;height:234px}
+  .about-grid{grid-template-columns:1fr;gap:var(--sp-10)}
+  .about-text{text-align:center}
+  .about-text .sec-heading,.about-text .sec-eyebrow{text-align:center}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .port-card.port-tall{grid-row:span 1;min-height:280px}
+  /* always show portfolio overlay on touch screens */
+  .port-overlay{opacity:1;pointer-events:auto}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .hiw-grid{grid-template-columns:repeat(3,1fr)}
+  .order-grid{grid-template-columns:1fr}
+  .pay-panel{position:static}
+  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .review-card--large{grid-column:span 1}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:var(--sp-10)}
+  .footer-brand{grid-column:span 2}
+  /* Mobile nav */
+  .nav-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:min(300px,85vw);background:var(--ink-mid);flex-direction:column;align-items:flex-start;justify-content:center;gap:var(--sp-2);padding:var(--sp-8);z-index:999;box-shadow:-8px 0 40px rgba(0,0,0,.4);transform:translateX(100%);transition:transform var(--dur-slow) var(--ease-out)}
+  .nav-menu.open{display:flex;transform:translateX(0)}
+  .nav-link{font-size:var(--fs-md);padding:var(--sp-3) 0;width:100%;border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-cta{margin-top:var(--sp-4);width:100%;text-align:center;padding:.8em 1.4em;font-size:var(--fs-sm)}
+  .nav-toggle{display:flex}
+  .nav-overlay{display:block}
+}
+@media(max-width:768px){
+  :root{--nav-h:62px}
+  .sec-pad{padding:var(--sp-16) 0}
+  .mags-stage{width:220px;height:310px}
+  .magazine-book{width:115px;height:163px}
+  .magazine-book--primary{width:135px;height:191px}
+  .about-cards{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:var(--sp-3)}
+  .port-card{min-height:220px}
+  .pricing-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}
+  .hiw-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto}
+  .form-row{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-brand{grid-column:span 1}
+  .footer-bottom .container{flex-direction:column;text-align:center}
+  .footer-bottom-tagline{display:none}
+  .wa-float{bottom:var(--sp-6);right:var(--sp-4);padding:.75em;border-radius:50%}
+  .wa-label{display:none}
+  .wa-icon{width:32px;height:32px;background:none}
+  .wa-icon svg{width:22px;height:22px}
+}
+@media(max-width:480px){
+  .portfolio-grid{grid-template-columns:1fr}
+  .port-card{min-height:300px}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .ig-cell--5,.ig-cell--6{display:none}
+  .hero-actions{flex-direction:column;width:100%}
+  .hero-actions .btn{justify-content:center;width:100%}
+}
+@media(min-width:1600px){
+  :root{--container:1400px}
+  .mags-stage{width:400px;height:560px}
+  .magazine-book{width:210px;height:297px}
+  .magazine-book--primary{width:245px;height:346px}
+}
+@media print{.nav,.wa-float,.preloader{display:none !important}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .reveal,.fade-up{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════ PRELOADER -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <p class="preloader-eyebrow">Est. 2024</p>
-      <div class="preloader-logo">
-        <span>IVORY</span>
-        <span class="preloader-dot">✦</span>
-        <span>ISSUE CO</span>
+<!-- PRELOADER -->
+<div id="preloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <p class="preloader-eyebrow">Est. 2024</p>
+    <div class="preloader-logo">
+      <span>IVORY</span>
+      <span class="preloader-dot">✦</span>
+      <span>ISSUE CO</span>
+    </div>
+    <div class="preloader-bar-track"><div class="preloader-bar"></div></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand" aria-label="Ivory Issue Co">
+      <span class="nav-brand-mark">I</span>
+      <span class="nav-brand-name">IVORY ISSUE CO</span>
+    </a>
+    <div class="nav-menu" id="navMenu" role="menubar">
+      <a href="#home" class="nav-link" role="menuitem">Home</a>
+      <a href="#works" class="nav-link" role="menuitem">Our Works</a>
+      <a href="#pricing" class="nav-link" role="menuitem">Pricing</a>
+      <a href="#how-it-works" class="nav-link" role="menuitem">How It Works</a>
+      <a href="#reviews" class="nav-link" role="menuitem">Reviews</a>
+      <a href="#order" class="nav-cta" role="menuitem">Order Now</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+<!-- HERO -->
+<section id="home" class="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grain"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-up">
+        <span class="eyebrow-dot"></span>
+        Premium Personalized Magazine Gifts
       </div>
-      <div class="preloader-bar-track"><div class="preloader-bar"></div></div>
+      <h1 class="hero-heading fade-up">
+        Your Memories.<br>
+        <em>Your Magazine.</em>
+      </h1>
+      <p class="hero-sub fade-up">Personalized magazine gifts crafted from your special moments.</p>
+      <div class="hero-actions fade-up">
+        <a href="#works" class="btn btn-cream">View Portfolio</a>
+        <a href="#order" class="btn btn-outline-cream">Order Now</a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="hero-stat"><strong>500+</strong><span>Happy Customers</span></div>
+        <div class="hero-stat-sep" aria-hidden="true"></div>
+        <div class="hero-stat"><strong>6+</strong><span>Magazine Types</span></div>
+        <div class="hero-stat-sep" aria-hidden="true"></div>
+        <div class="hero-stat"><strong>Pan India</strong><span>Delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="mags-stage">
+        <div class="mag-wrap mag-wrap--back">
+          <div class="magazine-book">
+            <div class="mag-spine"></div><div class="mag-pages"></div>
+            <div class="mag-cover-face">
+              <img src="pic/Anniversary.png" alt="Anniversary Magazine" loading="eager">
+              <div class="mag-cover-bar"><span>ANNIVERSARY EDITION</span><span>VOL. III</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mag-wrap mag-wrap--front">
+          <div class="magazine-book magazine-book--primary">
+            <div class="mag-spine"></div><div class="mag-pages"></div>
+            <div class="mag-cover-face">
+              <img src="pic/birthday.png" alt="Birthday Magazine" loading="eager">
+              <div class="mag-cover-bar"><span>BIRTHDAY EDITION</span><span>VOL. I — BESTSELLER ⭐</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mag-wrap mag-wrap--side">
+          <div class="magazine-book">
+            <div class="mag-spine"></div><div class="mag-pages"></div>
+            <div class="mag-cover-face">
+              <img src="pic/maincharacter.png" alt="Main Character Magazine" loading="eager">
+              <div class="mag-cover-bar"><span>MAIN CHARACTER ISSUE</span><span>VOL. VII</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll to explore</span>
+    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ NAVIGATION -->
-  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#home" class="nav-brand" aria-label="Ivory Issue Co">
-        <span class="nav-brand-mark">I</span>
-        <span class="nav-brand-name">IVORY ISSUE CO</span>
-      </a>
-      <div class="nav-menu" id="navMenu" role="menubar">
-        <a href="#home" class="nav-link" role="menuitem">Home</a>
-        <a href="#works" class="nav-link" role="menuitem">Our Works</a>
-        <a href="#pricing" class="nav-link" role="menuitem">Pricing</a>
-        <a href="#how-it-works" class="nav-link" role="menuitem">How It Works</a>
-        <a href="#reviews" class="nav-link" role="menuitem">Reviews</a>
-        <a href="#order" class="nav-cta" role="menuitem">Order Now</a>
+<!-- ABOUT -->
+<section id="about" class="about sec-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="sec-eyebrow">About Us</p>
+        <h2 class="sec-heading">What is<br><em>Ivory Issue Co?</em></h2>
+        <p class="about-body">We transform your favorite memories into beautifully designed magazine-style keepsakes. Whether it's a birthday, anniversary, farewell, friendship, or a main character moment — we make it unforgettable.</p>
+        <p class="about-body">Every magazine is crafted with editorial precision, using premium paper, thoughtful layouts, and your most cherished photos and stories.</p>
+        <a href="#order" class="btn btn-dark mt-lg">Create Your Magazine</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
-
-  <!-- ═══════════════════════════════════════════ HERO -->
-  <section id="home" class="hero" aria-label="Hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-grain"></div>
-      <div class="hero-glow"></div>
-    </div>
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-eyebrow fade-up">
-          <span class="eyebrow-dot"></span>
-          Premium Personalized Magazine Gifts
-        </div>
-        <h1 class="hero-heading fade-up">
-          Your Memories.<br>
-          <em>Your Magazine.</em>
-        </h1>
-        <p class="hero-sub fade-up">
-          Personalized magazine gifts crafted from your special moments.
-        </p>
-        <div class="hero-actions fade-up">
-          <a href="#works" class="btn btn-cream">View Portfolio</a>
-          <a href="#order" class="btn btn-outline-cream">Order Now</a>
-        </div>
-        <div class="hero-stats fade-up">
-          <div class="hero-stat">
-            <strong>500+</strong>
-            <span>Happy Customers</span>
-          </div>
-          <div class="hero-stat-sep" aria-hidden="true"></div>
-          <div class="hero-stat">
-            <strong>6+</strong>
-            <span>Magazine Types</span>
-          </div>
-          <div class="hero-stat-sep" aria-hidden="true"></div>
-          <div class="hero-stat">
-            <strong>Pan India</strong>
-            <span>Delivery</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="mags-stage">
-          <div class="mag-wrap mag-wrap--back">
-            <div class="magazine-book">
-              <div class="mag-spine"></div>
-              <div class="mag-pages"></div>
-              <div class="mag-cover-face">
-                <img src="pic/Anniversary.png" alt="Anniversary Magazine" loading="eager">
-                <div class="mag-cover-bar">
-                  <span>ANNIVERSARY EDITION</span>
-                  <span>VOL. III</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mag-wrap mag-wrap--front">
-            <div class="magazine-book magazine-book--primary">
-              <div class="mag-spine"></div>
-              <div class="mag-pages"></div>
-              <div class="mag-cover-face">
-                <img src="pic/birthday.png" alt="Birthday Magazine" loading="eager">
-                <div class="mag-cover-bar">
-                  <span>BIRTHDAY EDITION</span>
-                  <span>VOL. I — BESTSELLER ⭐</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mag-wrap mag-wrap--side">
-            <div class="magazine-book">
-              <div class="mag-spine"></div>
-              <div class="mag-pages"></div>
-              <div class="mag-cover-face">
-                <img src="pic/maincharacter.png" alt="Main Character Magazine" loading="eager">
-                <div class="mag-cover-bar">
-                  <span>MAIN CHARACTER ISSUE</span>
-                  <span>VOL. VII</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="about-cards reveal">
+        <div class="about-card"><span class="about-card-icon">✦</span><div><h3>Editorial Design</h3><p>Professional magazine layouts crafted by our design team.</p></div></div>
+        <div class="about-card"><span class="about-card-icon">✦</span><div><h3>Premium Quality</h3><p>High-quality printing on premium paper stock for a luxury feel.</p></div></div>
+        <div class="about-card"><span class="about-card-icon">✦</span><div><h3>Pan India Delivery</h3><p>Fast, secure delivery across India in gift-ready packaging.</p></div></div>
+        <div class="about-card"><span class="about-card-icon">✦</span><div><h3>Fully Personalized</h3><p>Every page tells your story, in your words, with your photos.</p></div></div>
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll to explore</span>
-      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works" class="works sec-pad sec-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow sec-eyebrow--light">Portfolio</p>
+      <h2 class="sec-heading sec-heading--light">Our <em>Works</em></h2>
+      <p class="sec-sub sec-sub--light">Explore our collection of personalized magazine masterpieces</p>
     </div>
-  </section>
+    <div class="portfolio-grid reveal">
 
-  <!-- ═══════════════════════════════════════════ ABOUT -->
-  <section id="about" class="about sec-pad">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p class="sec-eyebrow">About Us</p>
-          <h2 class="sec-heading">What is<br><em>Ivory Issue Co?</em></h2>
-          <p class="about-body">We transform your favorite memories into beautifully designed magazine-style keepsakes. Whether it's a birthday, anniversary, farewell, friendship, or a main character moment — we make it unforgettable.</p>
-          <p class="about-body">Every magazine is crafted with editorial precision, using premium paper, thoughtful layouts, and your most cherished photos and stories.</p>
-          <a href="#order" class="btn btn-dark mt-lg">Create Your Magazine</a>
-        </div>
-        <div class="about-cards reveal">
-          <div class="about-card">
-            <span class="about-card-icon">✦</span>
-            <div>
-              <h3>Editorial Design</h3>
-              <p>Professional magazine layouts crafted by our design team.</p>
-            </div>
-          </div>
-          <div class="about-card">
-            <span class="about-card-icon">✦</span>
-            <div>
-              <h3>Premium Quality</h3>
-              <p>High-quality printing on premium paper stock for a luxury feel.</p>
-            </div>
-          </div>
-          <div class="about-card">
-            <span class="about-card-icon">✦</span>
-            <div>
-              <h3>Pan India Delivery</h3>
-              <p>Fast, secure delivery across India in gift-ready packaging.</p>
-            </div>
-          </div>
-          <div class="about-card">
-            <span class="about-card-icon">✦</span>
-            <div>
-              <h3>Fully Personalized</h3>
-              <p>Every page tells your story, in your words, with your photos.</p>
-            </div>
+      <article class="port-card port-tall">
+        <figure class="port-figure">
+          <img src="pic/birthday.png" alt="Birthday Magazine" loading="lazy">
+          <img src="pic/birthday2.png" alt="Birthday Magazine spread" loading="lazy" class="port-img-alt">
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Birthday Magazine</span>
+            <h3>The Golden Year</h3>
+            <p>A stunning birthday celebration transformed into a premium editorial magazine.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
           </div>
         </div>
-      </div>
+      </article>
+
+      <article class="port-card">
+        <figure class="port-figure">
+          <img src="pic/Anniversary.png" alt="Anniversary Magazine" loading="lazy">
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Anniversary Magazine</span>
+            <h3>Love Story</h3>
+            <p>Celebrating years of love with an editorial magazine that tells your journey.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="port-card">
+        <figure class="port-figure">
+          <img src="pic/maincharacter.png" alt="Main Character Magazine" loading="lazy">
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Main Character Magazine</span>
+            <h3>Main Character Era</h3>
+            <p>Because everyone deserves a magazine that celebrates them.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="port-card port-tall">
+        <figure class="port-figure">
+          <img src="pic/farewell.png" alt="Farewell Magazine" loading="lazy">
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Farewell Magazine</span>
+            <h3>Until We Meet Again</h3>
+            <p>Send someone off with a beautiful farewell magazine full of memories.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="port-card">
+        <figure class="port-figure port-figure--gradient port-figure--friendship">
+          <div class="port-mag-placeholder">
+            <span class="pmp-vol">VOL. II</span>
+            <h3 class="pmp-title">MY<br>SQUAD</h3>
+            <span class="pmp-sub">Friendship Special</span>
+          </div>
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Friendship Magazine</span>
+            <h3>The Squad Files</h3>
+            <p>Celebrate your friendship group with a magazine they'll treasure forever.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="port-card">
+        <figure class="port-figure port-figure--gradient port-figure--custom">
+          <div class="port-mag-placeholder">
+            <span class="pmp-vol">CUSTOM</span>
+            <h3 class="pmp-title">YOUR<br>STORY</h3>
+            <span class="pmp-sub">Unlimited Possibilities</span>
+          </div>
+        </figure>
+        <div class="port-overlay">
+          <div class="port-info">
+            <span class="port-cat">Custom Magazine</span>
+            <h3>Your Story, Your Way</h3>
+            <p>Completely custom magazine for any occasion, theme, or person.</p>
+            <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
+          </div>
+        </div>
+      </article>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ WORKS -->
-  <section id="works" class="works sec-pad sec-dark">
-    <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow sec-eyebrow--light">Portfolio</p>
-        <h2 class="sec-heading sec-heading--light">Our <em>Works</em></h2>
-        <p class="sec-sub sec-sub--light">Explore our collection of personalized magazine masterpieces</p>
-      </div>
-      <div class="portfolio-grid reveal">
-
-        <article class="port-card port-tall">
-          <figure class="port-figure">
-            <img src="pic/birthday.png" alt="Birthday Magazine — The Golden Year" loading="lazy">
-            <img src="pic/birthday2.png" alt="Birthday Magazine spread" loading="lazy" class="port-img-alt">
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Birthday Magazine</span>
-              <h3>The Golden Year</h3>
-              <p>A stunning birthday celebration transformed into a premium editorial magazine.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="port-card">
-          <figure class="port-figure">
-            <img src="pic/Anniversary.png" alt="Anniversary Magazine — Love Story" loading="lazy">
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Anniversary Magazine</span>
-              <h3>Love Story</h3>
-              <p>Celebrating years of love with an editorial magazine that tells your journey.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="port-card">
-          <figure class="port-figure">
-            <img src="pic/maincharacter.png" alt="Main Character Magazine" loading="lazy">
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Main Character Magazine</span>
-              <h3>Main Character Era</h3>
-              <p>Because everyone deserves a magazine that celebrates them.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="port-card port-tall">
-          <figure class="port-figure">
-            <img src="pic/farewell.png" alt="Farewell Magazine — Until We Meet Again" loading="lazy">
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Farewell Magazine</span>
-              <h3>Until We Meet Again</h3>
-              <p>Send someone off with a beautiful farewell magazine full of memories.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="port-card">
-          <figure class="port-figure port-figure--gradient port-figure--friendship">
-            <div class="port-mag-placeholder">
-              <span class="pmp-vol">VOL. II</span>
-              <h3 class="pmp-title">MY<br>SQUAD</h3>
-              <span class="pmp-sub">Friendship Special</span>
-            </div>
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Friendship Magazine</span>
-              <h3>The Squad Files</h3>
-              <p>Celebrate your friendship group with a magazine they'll treasure forever.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="port-card">
-          <figure class="port-figure port-figure--gradient port-figure--custom">
-            <div class="port-mag-placeholder">
-              <span class="pmp-vol">CUSTOM</span>
-              <h3 class="pmp-title">YOUR<br>STORY</h3>
-              <span class="pmp-sub">Unlimited Possibilities</span>
-            </div>
-          </figure>
-          <div class="port-overlay">
-            <div class="port-info">
-              <span class="port-cat">Custom Magazine</span>
-              <h3>Your Story, Your Way</h3>
-              <p>Completely custom magazine for any occasion, theme, or person.</p>
-              <a href="#order" class="btn btn-cream btn-sm">Order Yours →</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
+<!-- PRICING -->
+<section id="pricing" class="pricing sec-pad">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow">Investment</p>
+      <h2 class="sec-heading">Simple <em>Pricing</em></h2>
+      <p class="sec-sub">Premium quality at transparent prices — no hidden costs</p>
     </div>
-  </section>
+    <div class="pricing-grid reveal">
 
-  <!-- ═══════════════════════════════════════════ PRICING -->
-  <section id="pricing" class="pricing sec-pad">
-    <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow">Investment</p>
-        <h2 class="sec-heading">Simple <em>Pricing</em></h2>
-        <p class="sec-sub">Premium quality at transparent prices — no hidden costs</p>
+      <div class="price-card">
+        <div class="price-card-head"><span class="price-icon">🎂</span><h3>Birthday Magazine</h3></div>
+        <div class="price-opts">
+          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+        </div>
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-dark btn-full">Order Now</a>
       </div>
-      <div class="pricing-grid reveal">
 
-        <div class="price-card">
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">🎂</span>
-            <h3>Birthday Magazine</h3>
-          </div>
-          <div class="price-opts">
-            <div class="price-opt">
-              <span>A5</span>
-              <strong>₹399</strong>
-            </div>
-            <div class="price-opt price-opt--hi">
-              <span>A4</span>
-              <strong>₹699</strong>
-              <span class="price-badge">Popular</span>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-dark btn-full">Order Now</a>
+      <div class="price-card price-card--hero">
+        <div class="price-hero-badge">Most Loved</div>
+        <div class="price-card-head"><span class="price-icon">💑</span><h3>Anniversary Magazine</h3></div>
+        <div class="price-opts">
+          <div class="price-opt"><span>A5</span><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹799</strong><span class="price-badge">Popular</span></div>
         </div>
-
-        <div class="price-card price-card--hero">
-          <div class="price-hero-badge">Most Loved</div>
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">💑</span>
-            <h3>Anniversary Magazine</h3>
-          </div>
-          <div class="price-opts">
-            <div class="price-opt">
-              <span>A5</span>
-              <strong>₹499</strong>
-            </div>
-            <div class="price-opt price-opt--hi">
-              <span>A4</span>
-              <strong>₹799</strong>
-              <span class="price-badge">Popular</span>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-gold btn-full">Order Now</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">⭐</span>
-            <h3>Main Character</h3>
-          </div>
-          <div class="price-opts">
-            <div class="price-opt">
-              <span>A5</span>
-              <strong>₹399</strong>
-            </div>
-            <div class="price-opt price-opt--hi">
-              <span>A4</span>
-              <strong>₹699</strong>
-              <span class="price-badge">Popular</span>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-dark btn-full">Order Now</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">✈️</span>
-            <h3>Farewell Magazine</h3>
-          </div>
-          <div class="price-opts">
-            <div class="price-opt">
-              <span>A5</span>
-              <strong>₹449</strong>
-            </div>
-            <div class="price-opt price-opt--hi">
-              <span>A4</span>
-              <strong>₹749</strong>
-              <span class="price-badge">Popular</span>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-dark btn-full">Order Now</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">👯</span>
-            <h3>Friendship Magazine</h3>
-          </div>
-          <div class="price-opts">
-            <div class="price-opt">
-              <span>A5</span>
-              <strong>₹399</strong>
-            </div>
-            <div class="price-opt price-opt--hi">
-              <span>A4</span>
-              <strong>₹699</strong>
-              <span class="price-badge">Popular</span>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-dark btn-full">Order Now</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-card-head">
-            <span class="price-icon" aria-hidden="true">✨</span>
-            <h3>Custom Magazine</h3>
-          </div>
-          <div class="price-opts price-opts--single">
-            <div class="price-opt price-opt--hi">
-              <span>Starting from</span>
-              <strong>₹499</strong>
-            </div>
-          </div>
-          <ul class="price-features">
-            <li><span>✔</span> Premium Design</li>
-            <li><span>✔</span> High Quality Printing</li>
-            <li><span>✔</span> Personalized Photos</li>
-            <li><span>✔</span> Custom Messages</li>
-            <li><span>✔</span> Gift Ready</li>
-          </ul>
-          <a href="#order" class="btn btn-dark btn-full">Order Now</a>
-        </div>
-
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-gold btn-full">Order Now</a>
       </div>
+
+      <div class="price-card">
+        <div class="price-card-head"><span class="price-icon">⭐</span><h3>Main Character</h3></div>
+        <div class="price-opts">
+          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+        </div>
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-dark btn-full">Order Now</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-head"><span class="price-icon">✈️</span><h3>Farewell Magazine</h3></div>
+        <div class="price-opts">
+          <div class="price-opt"><span>A5</span><strong>₹449</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹749</strong><span class="price-badge">Popular</span></div>
+        </div>
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-dark btn-full">Order Now</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-head"><span class="price-icon">👯</span><h3>Friendship Magazine</h3></div>
+        <div class="price-opts">
+          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+        </div>
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-dark btn-full">Order Now</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-head"><span class="price-icon">✨</span><h3>Custom Magazine</h3></div>
+        <div class="price-opts price-opts--single">
+          <div class="price-opt price-opt--hi"><span>Starting from</span><strong>₹499</strong></div>
+        </div>
+        <ul class="price-features">
+          <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
+          <li><span>✔</span> Personalized Photos</li><li><span>✔</span> Custom Messages</li><li><span>✔</span> Gift Ready</li>
+        </ul>
+        <a href="#order" class="btn btn-dark btn-full">Order Now</a>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ HOW IT WORKS -->
-  <section id="how-it-works" class="hiw sec-pad sec-dark">
-    <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow sec-eyebrow--light">Process</p>
-        <h2 class="sec-heading sec-heading--light">How It <em>Works</em></h2>
-        <p class="sec-sub sec-sub--light">From photos to magazine in just a few simple steps</p>
-      </div>
-      <div class="hiw-grid reveal">
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">01</div>
-          <div class="hiw-icon" aria-hidden="true">📚</div>
-          <h3>Choose Magazine Type</h3>
-          <p>Select from Birthday, Anniversary, Main Character, Farewell, Friendship, or Custom.</p>
-        </div>
-        <div class="hiw-connector" aria-hidden="true"></div>
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">02</div>
-          <div class="hiw-icon" aria-hidden="true">📷</div>
-          <h3>Send Photos</h3>
-          <p>Share your favorite memories and photos via WhatsApp or email.</p>
-        </div>
-        <div class="hiw-connector" aria-hidden="true"></div>
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">03</div>
-          <div class="hiw-icon" aria-hidden="true">✍️</div>
-          <h3>Share Content</h3>
-          <p>Tell us the stories, captions, and special messages to include.</p>
-        </div>
-        <div class="hiw-connector" aria-hidden="true"></div>
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">04</div>
-          <div class="hiw-icon" aria-hidden="true">💳</div>
-          <h3>Make Payment</h3>
-          <p>Pay securely via UPI, Google Pay, PhonePe, or Paytm.</p>
-        </div>
-        <div class="hiw-connector" aria-hidden="true"></div>
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">05</div>
-          <div class="hiw-icon" aria-hidden="true">👁️</div>
-          <h3>Receive Preview</h3>
-          <p>Review a digital preview and request any changes before printing.</p>
-        </div>
-        <div class="hiw-connector" aria-hidden="true"></div>
-
-        <div class="hiw-step">
-          <div class="hiw-num" aria-hidden="true">06</div>
-          <div class="hiw-icon" aria-hidden="true">📦</div>
-          <h3>Get Delivered</h3>
-          <p>Your premium magazine is printed and delivered to your door, gift-ready.</p>
-        </div>
-
-      </div>
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="hiw sec-pad sec-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow sec-eyebrow--light">Process</p>
+      <h2 class="sec-heading sec-heading--light">How It <em>Works</em></h2>
+      <p class="sec-sub sec-sub--light">From photos to magazine in just a few simple steps</p>
     </div>
-  </section>
+    <div class="hiw-grid reveal">
+      <div class="hiw-step"><div class="hiw-num">01</div><div class="hiw-icon">📚</div><h3>Choose Magazine Type</h3><p>Select from Birthday, Anniversary, Main Character, Farewell, Friendship, or Custom.</p></div>
+      <div class="hiw-step"><div class="hiw-num">02</div><div class="hiw-icon">📷</div><h3>Send Photos</h3><p>Share your favorite memories and photos via WhatsApp or email.</p></div>
+      <div class="hiw-step"><div class="hiw-num">03</div><div class="hiw-icon">✍️</div><h3>Share Content</h3><p>Tell us the stories, captions, and special messages to include.</p></div>
+      <div class="hiw-step"><div class="hiw-num">04</div><div class="hiw-icon">💳</div><h3>Make Payment</h3><p>Pay securely via UPI, Google Pay, PhonePe, or Paytm.</p></div>
+      <div class="hiw-step"><div class="hiw-num">05</div><div class="hiw-icon">👁️</div><h3>Receive Preview</h3><p>Review a digital preview and request any changes before printing.</p></div>
+      <div class="hiw-step"><div class="hiw-num">06</div><div class="hiw-icon">📦</div><h3>Get Delivered</h3><p>Your premium magazine is printed and delivered to your door, gift-ready.</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ ORDER / PAYMENT -->
-  <section id="order" class="order sec-pad">
-    <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow">Place Your Order</p>
-        <h2 class="sec-heading">Order Your <em>Magazine</em></h2>
-        <p class="sec-sub">Fill the form below to begin crafting your masterpiece</p>
-      </div>
-      <div class="order-grid reveal">
+<!-- ORDER / PAYMENT -->
+<section id="order" class="order sec-pad">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow">Place Your Order</p>
+      <h2 class="sec-heading">Order Your <em>Magazine</em></h2>
+      <p class="sec-sub">Fill the form below to begin crafting your masterpiece</p>
+    </div>
+    <div class="order-grid reveal">
 
-        <!-- Payment info panel -->
-        <aside class="pay-panel">
-          <h3 class="pay-panel-title">Payment Methods</h3>
-          <div class="upi-methods">
-            <div class="upi-chip upi-chip--gpay"><span>G</span>Google Pay</div>
-            <div class="upi-chip upi-chip--phonepe"><span>Pe</span>PhonePe</div>
-            <div class="upi-chip upi-chip--paytm"><span>Pt</span>Paytm</div>
-            <div class="upi-chip upi-chip--bhim"><span>B</span>BHIM</div>
-            <div class="upi-chip upi-chip--upi"><span>U</span>Any UPI</div>
-          </div>
-
-          <div class="upi-id-wrap">
-            <p class="upi-label">UPI ID</p>
-            <div class="upi-id-row">
-              <span class="upi-id-text" id="upiId">orders@ivoryissueco</span>
-              <button class="copy-btn" onclick="copyUPI()" aria-label="Copy UPI ID">
-                <span class="copy-icon">⧉</span> Copy
-              </button>
-            </div>
-          </div>
-
-          <div class="qr-wrap">
-            <div class="qr-box">
-              <div class="qr-mock" aria-label="QR code placeholder — replace with actual QR image">
-                <div class="qr-corner qr-corner--tl"></div>
-                <div class="qr-corner qr-corner--tr"></div>
-                <div class="qr-corner qr-corner--bl"></div>
-                <div class="qr-inner-grid">
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                  <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
-                  <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div>
-                  <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
-                </div>
-                <div class="qr-label-text">Scan to Pay</div>
-              </div>
-            </div>
-            <p class="qr-note">Replace the QR above with your actual payment QR code</p>
-          </div>
-
-          <div class="pay-notes">
-            <p>✦ Upload payment screenshot in the form</p>
-            <p>✦ Orders processed within 24 hours</p>
-            <p>✦ Preview shared in 24–48 hours</p>
-          </div>
-        </aside>
-
-        <!-- Order form -->
-        <div class="order-form-wrap">
-          <form class="order-form" id="orderForm" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="fname">Full Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="fname" name="fullName" class="form-field" placeholder="Your full name" required autocomplete="name">
-              <span class="form-err" id="fnameErr" role="alert"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="waNum">WhatsApp Number <span aria-hidden="true">*</span></label>
-              <input type="tel" id="waNum" name="whatsapp" class="form-field" placeholder="+91 XXXXX XXXXX" required autocomplete="tel">
-              <span class="form-err" id="waErr" role="alert"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="emailAddr">Email Address <span aria-hidden="true">*</span></label>
-              <input type="email" id="emailAddr" name="email" class="form-field" placeholder="your@email.com" required autocomplete="email">
-              <span class="form-err" id="emailErr" role="alert"></span>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="magType">Magazine Type <span aria-hidden="true">*</span></label>
-                <div class="select-wrap">
-                  <select id="magType" name="magType" class="form-field form-select" required>
-                    <option value="" disabled selected>Select type</option>
-                    <option value="birthday">Birthday Magazine</option>
-                    <option value="anniversary">Anniversary Magazine</option>
-                    <option value="main-character">Main Character Magazine</option>
-                    <option value="farewell">Farewell Magazine</option>
-                    <option value="friendship">Friendship Magazine</option>
-                    <option value="custom">Custom Magazine</option>
-                  </select>
-                  <span class="select-arrow" aria-hidden="true">↓</span>
-                </div>
-                <span class="form-err" id="typeErr" role="alert"></span>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Paper Size <span aria-hidden="true">*</span></label>
-                <div class="size-opts" role="radiogroup" aria-label="Paper size">
-                  <label class="size-opt">
-                    <input type="radio" name="paperSize" value="A5">
-                    <span>A5</span>
-                  </label>
-                  <label class="size-opt">
-                    <input type="radio" name="paperSize" value="A4">
-                    <span>A4</span>
-                  </label>
-                </div>
-                <span class="form-err" id="sizeErr" role="alert"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="payFile">Payment Screenshot <span aria-hidden="true">*</span></label>
-              <div class="file-drop" id="fileDrop">
-                <input type="file" id="payFile" name="paymentProof" class="file-input" accept="image/*,.pdf" required>
-                <div class="file-drop-ui">
-                  <span class="file-up-icon" aria-hidden="true">↑</span>
-                  <span class="file-up-text">Upload payment screenshot</span>
-                  <span class="file-up-hint">Click or drag & drop · JPG, PNG, PDF</span>
-                </div>
-                <div class="file-preview" id="filePreview" style="display:none;"></div>
-              </div>
-              <span class="form-err" id="fileErr" role="alert"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="notes">Additional Notes</label>
-              <textarea id="notes" name="notes" class="form-field form-textarea" placeholder="Special requests, theme ideas, important dates, or anything else we should know…"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-dark btn-full btn-submit">
-              Submit Order <span class="btn-arrow" aria-hidden="true">→</span>
+      <aside class="pay-panel">
+        <h3 class="pay-panel-title">Payment Methods</h3>
+        <div class="upi-methods">
+          <div class="upi-chip upi-chip--gpay"><span>G</span>Google Pay</div>
+          <div class="upi-chip upi-chip--phonepe"><span>Pe</span>PhonePe</div>
+          <div class="upi-chip upi-chip--paytm"><span>Pt</span>Paytm</div>
+          <div class="upi-chip upi-chip--bhim"><span>B</span>BHIM</div>
+          <div class="upi-chip upi-chip--upi"><span>U</span>Any UPI</div>
+        </div>
+        <div class="upi-id-wrap">
+          <p class="upi-label">UPI ID</p>
+          <div class="upi-id-row">
+            <span class="upi-id-text" id="upiId">orders@ivoryissueco</span>
+            <button class="copy-btn" onclick="copyUPI()" aria-label="Copy UPI ID">
+              <span>⧉</span> Copy
             </button>
-          </form>
-
-          <div class="form-success" id="formSuccess" role="alert" aria-live="polite" style="display:none;">
-            <div class="success-mark" aria-hidden="true">✦</div>
-            <h3>Order Received!</h3>
-            <p>Thank you! We'll contact you on WhatsApp within 2 hours to begin crafting your magazine.</p>
-            <a href="#home" class="btn btn-dark mt-lg">Back to Home</a>
           </div>
         </div>
+        <div class="qr-wrap">
+          <div class="qr-box">
+            <div class="qr-mock">
+              <div class="qr-corner qr-corner--tl"></div>
+              <div class="qr-corner qr-corner--tr"></div>
+              <div class="qr-corner qr-corner--bl"></div>
+              <div class="qr-inner-grid">
+                <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+                <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
+                <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+                <div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div>
+                <div class="qr-cell qr-cell--fill"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+                <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell qr-cell--fill"></div>
+              </div>
+              <div class="qr-label-text">Scan to Pay</div>
+            </div>
+          </div>
+          <p class="qr-note">Replace QR above with your actual payment QR</p>
+        </div>
+        <div class="pay-notes">
+          <p>✦ Upload payment screenshot in the form</p>
+          <p>✦ Orders processed within 24 hours</p>
+          <p>✦ Preview shared in 24–48 hours</p>
+        </div>
+      </aside>
 
+      <div class="order-form-wrap">
+        <form class="order-form" id="orderForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="fname">Full Name <span>*</span></label>
+            <input type="text" id="fname" name="fullName" class="form-field" placeholder="Your full name" required autocomplete="name">
+            <span class="form-err" id="fnameErr" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="waNum">WhatsApp Number <span>*</span></label>
+            <input type="tel" id="waNum" name="whatsapp" class="form-field" placeholder="+91 XXXXX XXXXX" required autocomplete="tel">
+            <span class="form-err" id="waErr" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="emailAddr">Email Address <span>*</span></label>
+            <input type="email" id="emailAddr" name="email" class="form-field" placeholder="your@email.com" required autocomplete="email">
+            <span class="form-err" id="emailErr" role="alert"></span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="magType">Magazine Type <span>*</span></label>
+              <div class="select-wrap">
+                <select id="magType" name="magType" class="form-field form-select" required>
+                  <option value="" disabled selected>Select type</option>
+                  <option value="birthday">Birthday Magazine</option>
+                  <option value="anniversary">Anniversary Magazine</option>
+                  <option value="main-character">Main Character Magazine</option>
+                  <option value="farewell">Farewell Magazine</option>
+                  <option value="friendship">Friendship Magazine</option>
+                  <option value="custom">Custom Magazine</option>
+                </select>
+                <span class="select-arrow">↓</span>
+              </div>
+              <span class="form-err" id="typeErr" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Paper Size <span>*</span></label>
+              <div class="size-opts" role="radiogroup">
+                <label class="size-opt"><input type="radio" name="paperSize" value="A5"><span>A5</span></label>
+                <label class="size-opt"><input type="radio" name="paperSize" value="A4"><span>A4</span></label>
+              </div>
+              <span class="form-err" id="sizeErr" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="payFile">Payment Screenshot <span>*</span></label>
+            <div class="file-drop" id="fileDrop">
+              <input type="file" id="payFile" name="paymentProof" class="file-input" accept="image/*,.pdf" required>
+              <div class="file-drop-ui">
+                <span class="file-up-icon">↑</span>
+                <span class="file-up-text">Upload payment screenshot</span>
+                <span class="file-up-hint">Click or drag & drop · JPG, PNG, PDF</span>
+              </div>
+              <div class="file-preview" id="filePreview" style="display:none;"></div>
+            </div>
+            <span class="form-err" id="fileErr" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" class="form-field form-textarea" placeholder="Special requests, theme ideas, important dates…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark btn-full btn-submit">
+            Submit Order <span class="btn-arrow">→</span>
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess" role="alert" aria-live="polite" style="display:none;">
+          <div class="success-mark">✦</div>
+          <h3>Order Received!</h3>
+          <p>Thank you! We'll contact you on WhatsApp within 2 hours to begin crafting your magazine.</p>
+          <a href="#home" class="btn btn-dark mt-lg">Back to Home</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews sec-pad sec-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow sec-eyebrow--light">Reviews</p>
+      <h2 class="sec-heading sec-heading--light">What They <em>Say</em></h2>
+      <p class="sec-sub sec-sub--light">Stories from our happy customers across India</p>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"The best gift I've ever given my mom on her birthday. She cried happy tears when she saw it. Every single page was perfection."</p>
+        <div class="review-author"><div class="rev-avatar">P</div><div><strong>Priya Sharma</strong><span>Birthday Magazine · Mumbai</span></div></div>
+      </div>
+      <div class="review-card review-card--large">
+        <div class="review-stars">★★★★★</div>
+        <p>"Beautiful quality and amazing design. I got a farewell magazine made for my best friend who was moving cities and she absolutely loved it. The design team really captured our entire friendship perfectly."</p>
+        <div class="review-author"><div class="rev-avatar">S</div><div><strong>Shruti Menon</strong><span>Farewell Magazine · Bangalore</span></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Perfect anniversary surprise. My husband was completely speechless. Worth every single rupee — 10/10 would recommend."</p>
+        <div class="review-author"><div class="rev-avatar">A</div><div><strong>Anjali Gupta</strong><span>Anniversary Magazine · Delhi</span></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"My entire friend group got a friendship magazine made. We look at it every time we meet. It's a priceless memory we'll all cherish."</p>
+        <div class="review-author"><div class="rev-avatar">R</div><div><strong>Rohan Kapoor</strong><span>Friendship Magazine · Pune</span></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"I got the Main Character magazine as a surprise from my friends. Felt like a real celebrity with my own cover shoot! Absolutely loved it."</p>
+        <div class="review-author"><div class="rev-avatar">K</div><div><strong>Kavya Nair</strong><span>Main Character Magazine · Hyderabad</span></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Fast delivery, premium packaging, and absolutely stunning design. Ivory Issue Co is genuinely next level — nothing else like it."</p>
+        <div class="review-author"><div class="rev-avatar">V</div><div><strong>Vikram Patel</strong><span>Custom Magazine · Chennai</span></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ TESTIMONIALS -->
-  <section id="reviews" class="reviews sec-pad sec-dark">
+<!-- INSTAGRAM -->
+<section id="instagram" class="insta sec-pad">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow">Instagram</p>
+      <h2 class="sec-heading">Follow Our <em>Journey</em></h2>
+      <p class="sec-sub">@_ivoryissueco — Behind the scenes &amp; latest creations</p>
+    </div>
+    <div class="ig-grid reveal">
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--1"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--2"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--3"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--4"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--5"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--6"><div class="ig-overlay-hover"><span>View on Instagram</span></div></a>
+    </div>
+    <div class="ig-cta reveal">
+      <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="btn btn-ig">
+        <span>◎</span> Follow @_ivoryissueco
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq sec-pad sec-alt">
+  <div class="container">
+    <div class="sec-header reveal">
+      <p class="sec-eyebrow">FAQ</p>
+      <h2 class="sec-heading">Common <em>Questions</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How long does delivery take?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>Standard delivery takes 5–7 business days across India. Express delivery (2–3 days) is available at an additional charge. Digital previews are shared within 24–48 hours of placing your order.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I customize everything?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>Absolutely! Every magazine is fully personalized. You choose the photos, captions, headlines, cover design, and special messages. Our design team works with you to bring your vision to life.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you ship across India?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>Yes! We deliver to all states in India. All orders are packed securely in premium gift-ready packaging to ensure they arrive in perfect condition.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I request urgent delivery?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>Yes! We offer rush orders for urgent occasions. Contact us on WhatsApp to discuss express processing and priority delivery options. Additional charges apply for urgent orders.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How many photos can I include?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>A5 magazines typically include 10–15 photos while A4 magazines can include 20–30+ photos. Our team will advise you on the optimal number based on your order.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What if I want changes after the preview?<span class="faq-toggle">+</span></button>
+        <div class="faq-a" hidden><p>We offer up to 2 rounds of revisions before printing at no extra charge. We want you to be 100% happy with your magazine.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
     <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow sec-eyebrow--light">Reviews</p>
-        <h2 class="sec-heading sec-heading--light">What They <em>Say</em></h2>
-        <p class="sec-sub sec-sub--light">Stories from our happy customers across India</p>
-      </div>
-      <div class="reviews-grid reveal">
-
-        <div class="review-card">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"The best gift I've ever given my mom on her birthday. She cried happy tears when she saw it. Every single page was perfection."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">P</div>
-            <div>
-              <strong>Priya Sharma</strong>
-              <span>Birthday Magazine · Mumbai</span>
-            </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-logo">IVORY ISSUE CO</p>
+          <p class="footer-tagline">Turn Memories Into Magazines.</p>
+          <p class="footer-desc">Premium personalized magazine gifts for every special occasion. Crafted with love, delivered with care, across India.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">◎</a>
+            <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp">✉</a>
+            <a href="mailto:orders@ivoryissueco.com" class="footer-social-link" aria-label="Email">@</a>
           </div>
         </div>
-
-        <div class="review-card review-card--large">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"Beautiful quality and amazing design. I got a farewell magazine made for my best friend who was moving cities and she absolutely loved it. The design team really captured our entire friendship perfectly. I still can't believe how good it looks."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">S</div>
-            <div>
-              <strong>Shruti Menon</strong>
-              <span>Farewell Magazine · Bangalore</span>
-            </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#works">Our Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#order">Order Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Magazine Types</h4>
+          <ul>
+            <li><a href="#order">Birthday Magazine</a></li>
+            <li><a href="#order">Anniversary Magazine</a></li>
+            <li><a href="#order">Main Character</a></li>
+            <li><a href="#order">Farewell Magazine</a></li>
+            <li><a href="#order">Friendship Magazine</a></li>
+            <li><a href="#order">Custom Magazine</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <div class="footer-contacts">
+            <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" class="footer-contact">
+              <span>✉</span><div><strong>WhatsApp</strong><span>+91 99999 99999</span></div>
+            </a>
+            <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="footer-contact">
+              <span>◎</span><div><strong>Instagram</strong><span>@_ivoryissueco</span></div>
+            </a>
+            <a href="mailto:orders@ivoryissueco.com" class="footer-contact">
+              <span>@</span><div><strong>Email</strong><span>orders@ivoryissueco.com</span></div>
+            </a>
           </div>
         </div>
-
-        <div class="review-card">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"Perfect anniversary surprise. My husband was completely speechless. Worth every single rupee — 10/10 would recommend."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">A</div>
-            <div>
-              <strong>Anjali Gupta</strong>
-              <span>Anniversary Magazine · Delhi</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"My entire friend group got a friendship magazine made. We look at it every time we meet. It's a priceless memory we'll all cherish."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">R</div>
-            <div>
-              <strong>Rohan Kapoor</strong>
-              <span>Friendship Magazine · Pune</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"I got the Main Character magazine as a surprise from my friends. Felt like a real celebrity with my own cover shoot! Absolutely loved it."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">K</div>
-            <div>
-              <strong>Kavya Nair</strong>
-              <span>Main Character Magazine · Hyderabad</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars" aria-label="5 stars">★★★★★</div>
-          <p>"Fast delivery, premium packaging, and absolutely stunning design. Ivory Issue Co is genuinely next level — nothing else like it."</p>
-          <div class="review-author">
-            <div class="rev-avatar" aria-hidden="true">V</div>
-            <div>
-              <strong>Vikram Patel</strong>
-              <span>Custom Magazine · Chennai</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ INSTAGRAM -->
-  <section id="instagram" class="insta sec-pad">
+  </div>
+  <div class="footer-bottom">
     <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow">Instagram</p>
-        <h2 class="sec-heading">Follow Our <em>Journey</em></h2>
-        <p class="sec-sub">@_ivoryissueco — Behind the scenes &amp; latest creations</p>
-      </div>
-      <div class="ig-grid reveal">
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--1" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--2" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--3" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--4" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--5" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="ig-cell ig-cell--6" aria-label="View on Instagram">
-          <div class="ig-overlay-hover"><span>View on Instagram</span></div>
-        </a>
-      </div>
-      <div class="ig-cta reveal">
-        <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="btn btn-ig">
-          <span aria-hidden="true">◎</span> Follow @_ivoryissueco
-        </a>
-      </div>
+      <p>© 2024 Ivory Issue Co. All rights reserved. Made with ♥ in India.</p>
+      <p class="footer-bottom-tagline">"Turn Your Memories Into A Magazine"</p>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ═══════════════════════════════════════════ FAQ -->
-  <section id="faq" class="faq sec-pad sec-alt">
-    <div class="container">
-      <div class="sec-header reveal">
-        <p class="sec-eyebrow">FAQ</p>
-        <h2 class="sec-heading">Common <em>Questions</em></h2>
-      </div>
-      <div class="faq-list reveal">
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919999999999?text=Hi%20Ivory%20Issue%20Co!%20I'd%20like%20to%20order%20a%20magazine."
+   target="_blank" rel="noopener noreferrer"
+   class="wa-float" aria-label="Chat on WhatsApp to order">
+  <div class="wa-icon">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </div>
+  <span class="wa-label">Order Now</span>
+</a>
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            How long does delivery take?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>Standard delivery takes 5–7 business days across India. Express delivery (2–3 days) is available at an additional charge. Digital previews are shared within 24–48 hours of placing your order.</p>
-          </div>
-        </div>
+<script>
+(function(){
+'use strict';
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Can I customize everything?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>Absolutely! Every magazine is fully personalized. You choose the photos, captions, headlines, cover design, and special messages. Our design team works with you to bring your vision to life.</p>
-          </div>
-        </div>
+/* ─── Preloader: guaranteed dismiss after 3.5s ─── */
+function initPreloader(){
+  var loader=document.getElementById('preloader');
+  if(!loader)return;
+  document.body.style.overflow='hidden';
+  var done=function(){
+    loader.classList.add('done');
+    document.body.style.overflow='';
+    triggerHeroAnim();
+  };
+  var timerOk=false,loadOk=false;
+  var check=function(){if(timerOk&&loadOk)done();};
+  setTimeout(function(){timerOk=true;check();},2000);
+  // Force dismiss after 3.5s regardless
+  setTimeout(function(){if(!loader.classList.contains('done'))done();},3500);
+  if(document.readyState==='complete'){loadOk=true;check();}
+  else window.addEventListener('load',function(){loadOk=true;check();});
+}
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Do you ship across India?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>Yes! We deliver to all states in India. Shipping costs are calculated based on location. All orders are packed securely in premium gift-ready packaging to ensure they arrive in perfect condition.</p>
-          </div>
-        </div>
+function triggerHeroAnim(){
+  document.querySelectorAll('.fade-up').forEach(function(el,i){
+    setTimeout(function(){el.classList.add('visible');},i*100);
+  });
+}
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Can I request urgent delivery?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>Yes! We offer rush orders for urgent occasions. Contact us on WhatsApp to discuss express processing and priority delivery options. Additional charges apply for urgent orders.</p>
-          </div>
-        </div>
+/* ─── Sticky nav ─── */
+function initNav(){
+  var nav=document.getElementById('nav');
+  if(!nav)return;
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>60);};
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+}
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            How many photos can I include?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>A5 magazines typically include 10–15 photos while A4 magazines can include 20–30+ photos. Our team will advise you on the optimal number based on your order. The more, the merrier!</p>
-          </div>
-        </div>
+/* ─── Active nav links ─── */
+function initActiveLinks(){
+  var sections=document.querySelectorAll('section[id]');
+  var links=document.querySelectorAll('.nav-link');
+  if(!sections.length||!links.length)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){
+          l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id);
+        });
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  sections.forEach(function(s){obs.observe(s);});
+}
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            What if I want changes after the preview?
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" hidden>
-            <p>We offer up to 2 rounds of revisions before printing at no extra charge. We want you to be 100% happy with your magazine. Additional revision rounds may be charged separately.</p>
-          </div>
-        </div>
+/* ─── Mobile menu ─── */
+function initMobileMenu(){
+  var toggle=document.getElementById('navToggle');
+  var menu=document.getElementById('navMenu');
+  var overlay=document.getElementById('navOverlay');
+  if(!toggle||!menu||!overlay)return;
 
-      </div>
-    </div>
-  </section>
+  var open=function(){
+    menu.classList.add('open');
+    overlay.classList.add('visible');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  };
+  var close=function(){
+    menu.classList.remove('open');
+    overlay.classList.remove('visible');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  };
 
-  <!-- ═══════════════════════════════════════════ FOOTER -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-grid">
+  toggle.addEventListener('click',function(e){
+    e.stopPropagation();
+    menu.classList.contains('open')?close():open();
+  });
+  overlay.addEventListener('click',close);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+}
 
-          <div class="footer-brand">
-            <p class="footer-logo">IVORY ISSUE CO</p>
-            <p class="footer-tagline">Turn Memories Into Magazines.</p>
-            <p class="footer-desc">Premium personalized magazine gifts for every special occasion. Crafted with love, delivered with care, across India.</p>
-            <div class="footer-socials">
-              <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">◎</a>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp">✉</a>
-              <a href="mailto:orders@ivoryissueco.com" class="footer-social-link" aria-label="Email">@</a>
-            </div>
-          </div>
+/* ─── Smooth scroll ─── */
+function initSmoothScroll(){
+  var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var href=a.getAttribute('href');
+      if(href==='#')return;
+      var target=document.querySelector(href);
+      if(!target)return;
+      e.preventDefault();
+      var top=target.getBoundingClientRect().top+window.scrollY-navH;
+      window.scrollTo({top:top,behavior:'smooth'});
+    });
+  });
+}
 
-          <div class="footer-col">
-            <h4>Navigate</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#works">Our Works</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#reviews">Reviews</a></li>
-              <li><a href="#order">Order Now</a></li>
-            </ul>
-          </div>
+/* ─── Reveal on scroll ─── */
+function initReveal(){
+  var els=document.querySelectorAll('.reveal');
+  if(!els.length)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(el){obs.observe(el);});
+}
 
-          <div class="footer-col">
-            <h4>Magazine Types</h4>
-            <ul>
-              <li><a href="#order">Birthday Magazine</a></li>
-              <li><a href="#order">Anniversary Magazine</a></li>
-              <li><a href="#order">Main Character</a></li>
-              <li><a href="#order">Farewell Magazine</a></li>
-              <li><a href="#order">Friendship Magazine</a></li>
-              <li><a href="#order">Custom Magazine</a></li>
-            </ul>
-          </div>
+/* ─── FAQ accordion ─── */
+function initFAQ(){
+  var items=document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var btn=item.querySelector('.faq-q');
+    var ans=item.querySelector('.faq-a');
+    if(!btn||!ans)return;
+    btn.addEventListener('click',function(){
+      var isOpen=btn.getAttribute('aria-expanded')==='true';
+      items.forEach(function(other){
+        var ob=other.querySelector('.faq-q');
+        var oa=other.querySelector('.faq-a');
+        if(ob&&oa&&ob!==btn){ob.setAttribute('aria-expanded','false');oa.setAttribute('hidden','');}
+      });
+      if(isOpen){btn.setAttribute('aria-expanded','false');ans.setAttribute('hidden','');}
+      else{btn.setAttribute('aria-expanded','true');ans.removeAttribute('hidden');}
+    });
+  });
+}
 
-          <div class="footer-col">
-            <h4>Get In Touch</h4>
-            <div class="footer-contacts">
-              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" class="footer-contact">
-                <span aria-hidden="true">✉</span>
-                <div>
-                  <strong>WhatsApp</strong>
-                  <span>+91 99999 99999</span>
-                </div>
-              </a>
-              <a href="https://instagram.com/_ivoryissueco" target="_blank" rel="noopener noreferrer" class="footer-contact">
-                <span aria-hidden="true">◎</span>
-                <div>
-                  <strong>Instagram</strong>
-                  <span>@_ivoryissueco</span>
-                </div>
-              </a>
-              <a href="mailto:orders@ivoryissueco.com" class="footer-contact">
-                <span aria-hidden="true">@</span>
-                <div>
-                  <strong>Email</strong>
-                  <span>orders@ivoryissueco.com</span>
-                </div>
-              </a>
-            </div>
-          </div>
+/* ─── Copy UPI ID ─── */
+window.copyUPI=function(){
+  var el=document.getElementById('upiId');
+  if(!el)return;
+  var text=el.textContent.trim();
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showToast);
+  } else {
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');showToast();}catch(ex){}
+    document.body.removeChild(ta);
+  }
+};
 
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>© 2024 Ivory Issue Co. All rights reserved. Made with ♥ in India.</p>
-        <p class="footer-bottom-tagline">"Turn Your Memories Into A Magazine"</p>
-      </div>
-    </div>
-  </footer>
+function showToast(){
+  var t=document.createElement('div');
+  t.textContent='UPI ID copied!';
+  Object.assign(t.style,{position:'fixed',bottom:'2rem',left:'50%',transform:'translateX(-50%)',
+    background:'#25D366',color:'#fff',padding:'.6em 1.4em',borderRadius:'100px',
+    fontSize:'.875rem',fontWeight:'600',zIndex:'9999',pointerEvents:'none',
+    boxShadow:'0 4px 16px rgba(37,211,102,.35)',transition:'opacity .3s'});
+  document.body.appendChild(t);
+  setTimeout(function(){t.style.opacity='0';},2000);
+  setTimeout(function(){t.remove();},2400);
+}
 
-  <!-- ═══════════════════════════════════════════ FLOATING WHATSAPP -->
-  <a href="https://wa.me/919999999999?text=Hi%20Ivory%20Issue%20Co!%20I'd%20like%20to%20order%20a%20magazine."
-     target="_blank" rel="noopener noreferrer"
-     class="wa-float" aria-label="Chat on WhatsApp to order">
-    <div class="wa-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-    </div>
-    <span class="wa-label">Order Now</span>
-  </a>
+/* ─── File upload preview ─── */
+function initFileUpload(){
+  var drop=document.getElementById('fileDrop');
+  var input=document.getElementById('payFile');
+  var preview=document.getElementById('filePreview');
+  if(!drop||!input||!preview)return;
 
-  <script src="script.js"></script>
+  var showPreview=function(file){
+    if(!file)return;
+    var ui=drop.querySelector('.file-drop-ui');
+    if(file.type.startsWith('image/')){
+      var reader=new FileReader();
+      reader.onload=function(e){
+        preview.innerHTML='<img src="'+e.target.result+'" alt="preview"><span>'+file.name+'</span>';
+        preview.style.display='flex';
+        if(ui)ui.style.display='none';
+      };
+      reader.readAsDataURL(file);
+    } else {
+      preview.innerHTML='<span style="font-size:1.5rem">📄</span><span>'+file.name+'</span>';
+      preview.style.display='flex';
+      if(ui)ui.style.display='none';
+    }
+  };
+
+  input.addEventListener('change',function(){if(input.files[0])showPreview(input.files[0]);});
+  drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('drag-over');});
+  drop.addEventListener('dragleave',function(){drop.classList.remove('drag-over');});
+  drop.addEventListener('drop',function(e){
+    e.preventDefault();drop.classList.remove('drag-over');
+    if(e.dataTransfer.files[0]){input.files=e.dataTransfer.files;showPreview(e.dataTransfer.files[0]);}
+  });
+}
+
+/* ─── Order form ─── */
+function initOrderForm(){
+  var form=document.getElementById('orderForm');
+  var success=document.getElementById('formSuccess');
+  if(!form||!success)return;
+
+  var showErr=function(id,msg){var el=document.getElementById(id);if(el){el.textContent=msg;el.classList.add('show');}};
+  var hideErr=function(id){var el=document.getElementById(id);if(el){el.textContent='';el.classList.remove('show');}};
+  var setErr=function(f){if(f)f.classList.add('error');};
+  var clrErr=function(f){if(f)f.classList.remove('error');};
+
+  var rules=[
+    {field:form.querySelector('#fname'),err:'fnameErr',test:function(v){return v.trim().length>=2;},msg:'Please enter your full name.'},
+    {field:form.querySelector('#waNum'),err:'waErr',test:function(v){return /^[+\d\s()-]{7,15}$/.test(v.trim());},msg:'Please enter a valid WhatsApp number.'},
+    {field:form.querySelector('#emailAddr'),err:'emailErr',test:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());},msg:'Please enter a valid email address.'},
+    {field:form.querySelector('#magType'),err:'typeErr',test:function(v){return v!=='';},msg:'Please select a magazine type.'},
+    {field:null,err:'sizeErr',test:function(){return !!form.querySelector('input[name="paperSize"]:checked');},msg:'Please select a paper size.'},
+    {field:form.querySelector('#payFile'),err:'fileErr',test:function(_,el){return el&&el.files&&el.files.length>0;},msg:'Please upload your payment screenshot.'}
+  ];
+
+  rules.forEach(function(r){
+    if(!r.field)return;
+    r.field.addEventListener('input',function(){clrErr(r.field);hideErr(r.err);});
+    r.field.addEventListener('change',function(){clrErr(r.field);hideErr(r.err);});
+  });
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var valid=true;
+    rules.forEach(function(r){
+      var val=r.field?r.field.value:'';
+      var ok=r.test(val,r.field);
+      hideErr(r.err);
+      if(r.field)clrErr(r.field);
+      if(!ok){showErr(r.err,r.msg);if(r.field)setErr(r.field);valid=false;}
+    });
+    if(!valid){
+      var firstErr=form.querySelector('.error,.form-err.show');
+      if(firstErr)firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    var btn=form.querySelector('.btn-submit');
+    if(btn){btn.disabled=true;btn.textContent='Submitting…';}
+    setTimeout(function(){
+      form.style.display='none';
+      success.style.display='block';
+      success.scrollIntoView({behavior:'smooth',block:'center'});
+    },800);
+  });
+}
+
+/* ─── Portfolio card stagger ─── */
+function initCardStagger(){
+  var cards=document.querySelectorAll('.port-card,.price-card,.review-card,.about-card');
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08});
+  cards.forEach(function(c){
+    c.style.opacity='0';
+    c.style.transform='translateY(30px)';
+    c.style.transition='opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)';
+    obs.observe(c);
+  });
+}
+
+/* ─── Hero parallax ─── */
+function initParallax(){
+  var glow=document.querySelector('.hero-glow');
+  if(!glow)return;
+  var tick=false;
+  window.addEventListener('scroll',function(){
+    if(!tick){
+      requestAnimationFrame(function(){
+        var y=window.scrollY;
+        if(y<window.innerHeight)glow.style.transform='translateY('+(y*.15)+'px)';
+        tick=false;
+      });
+      tick=true;
+    }
+  },{passive:true});
+}
+
+/* ─── Magazine tilt ─── */
+function initMagTilt(){
+  document.querySelectorAll('.magazine-book').forEach(function(b){
+    b.addEventListener('mousemove',function(e){
+      var r=b.getBoundingClientRect();
+      var x=((e.clientX-r.left)/r.width-.5)*16;
+      var y=((e.clientY-r.top)/r.height-.5)*16;
+      b.style.transform='perspective(600px) rotateX('+(-y)+'deg) rotateY('+x+'deg) scale(1.04)';
+      b.style.transition='transform .1s';
+    });
+    b.addEventListener('mouseleave',function(){
+      b.style.transform='';
+      b.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
+    });
+  });
+}
+
+/* ─── IG tilt ─── */
+function initIGTilt(){
+  document.querySelectorAll('.ig-cell').forEach(function(c){
+    c.addEventListener('mousemove',function(e){
+      var r=c.getBoundingClientRect();
+      var x=((e.clientX-r.left)/r.width-.5)*8;
+      var y=((e.clientY-r.top)/r.height-.5)*8;
+      c.style.transform='perspective(400px) rotateX('+(-y)+'deg) rotateY('+x+'deg) scale(1.02)';
+    });
+    c.addEventListener('mouseleave',function(){
+      c.style.transform='';
+      c.style.transition='transform .4s cubic-bezier(.16,1,.3,1)';
+    });
+  });
+}
+
+/* ─── Init all ─── */
+document.addEventListener('DOMContentLoaded',function(){
+  initPreloader();
+  initNav();
+  initActiveLinks();
+  initMobileMenu();
+  initSmoothScroll();
+  initReveal();
+  initFAQ();
+  initFileUpload();
+  initOrderForm();
+  initCardStagger();
+  initParallax();
+  initMagTilt();
+  initIGTilt();
+});
+
+})();
+</script>
 </body>
 </html>
