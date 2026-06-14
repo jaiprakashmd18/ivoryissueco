@@ -237,13 +237,15 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
 .price-icon{font-size:1.5rem}
 .price-card-head h3{font-family:var(--ff-serif);font-size:var(--fs-md);font-weight:700;color:var(--ink)}
 .price-card--hero .price-card-head h3{color:var(--cream)}
-.price-opts{display:flex;gap:var(--sp-3)}
-.price-opts--single{justify-content:center}
-.price-opt{flex:1;display:flex;flex-direction:column;align-items:center;gap:var(--sp-1);padding:var(--sp-4) var(--sp-3);border:1px solid var(--border);border-radius:var(--radius-md);text-align:center;position:relative;transition:border-color var(--dur-fast)}
+.price-opts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2)}
+.price-opts--single{grid-template-columns:1fr;max-width:200px;margin:0 auto}
+.price-opt{display:flex;flex-direction:column;align-items:center;gap:2px;padding:var(--sp-3) var(--sp-2);border:1px solid var(--border);border-radius:var(--radius-md);text-align:center;position:relative;transition:border-color var(--dur-fast)}
 .price-card--hero .price-opt{border-color:var(--border-dark)}
-.price-opt span:first-child{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.price-card--hero .price-opt span:first-child{color:var(--muted-light)}
-.price-opt strong{font-family:var(--ff-serif);font-size:var(--fs-xl);font-weight:700;color:var(--ink);line-height:1}
+.price-opt span:first-child{font-family:var(--ff-sans);font-size:var(--fs-xs);font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
+.price-card--hero .price-opt span:first-child{color:var(--cream)}
+.price-opt small{font-family:var(--ff-sans);font-size:.6rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.price-card--hero .price-opt small{color:var(--muted-light)}
+.price-opt strong{font-family:var(--ff-serif);font-size:var(--fs-lg);font-weight:700;color:var(--ink);line-height:1;margin-top:2px}
 .price-card--hero .price-opt strong{color:var(--cream)}
 .price-opt--hi{border-color:var(--gold);background:rgba(184,151,90,.04)}
 .price-card--hero .price-opt--hi{background:rgba(184,151,90,.1)}
@@ -743,8 +745,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
       <div class="price-card">
         <div class="price-card-head"><span class="price-icon">🎂</span><h3>Birthday Magazine</h3></div>
         <div class="price-opts">
-          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
-          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>8 pages</small><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>8 pages</small><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>12 pages</small><strong>₹749</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>12 pages</small><strong>₹1,199</strong></div>
         </div>
         <ul class="price-features">
           <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
@@ -757,8 +761,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
         <div class="price-hero-badge">Most Loved</div>
         <div class="price-card-head"><span class="price-icon">💑</span><h3>Anniversary Magazine</h3></div>
         <div class="price-opts">
-          <div class="price-opt"><span>A5</span><strong>₹499</strong></div>
-          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹799</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>8 pages</small><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>8 pages</small><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>12 pages</small><strong>₹749</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>12 pages</small><strong>₹1,199</strong></div>
         </div>
         <ul class="price-features">
           <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
@@ -770,8 +776,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
       <div class="price-card">
         <div class="price-card-head"><span class="price-icon">⭐</span><h3>Main Character</h3></div>
         <div class="price-opts">
-          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
-          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>8 pages</small><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>8 pages</small><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>12 pages</small><strong>₹749</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>12 pages</small><strong>₹1,199</strong></div>
         </div>
         <ul class="price-features">
           <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
@@ -783,8 +791,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
       <div class="price-card">
         <div class="price-card-head"><span class="price-icon">✈️</span><h3>Farewell Magazine</h3></div>
         <div class="price-opts">
-          <div class="price-opt"><span>A5</span><strong>₹449</strong></div>
-          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>8 pages</small><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>8 pages</small><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>12 pages</small><strong>₹749</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>12 pages</small><strong>₹1,199</strong></div>
         </div>
         <ul class="price-features">
           <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
@@ -796,8 +806,10 @@ a,button,label,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-c
       <div class="price-card">
         <div class="price-card-head"><span class="price-icon">👯</span><h3>Friendship Magazine</h3></div>
         <div class="price-opts">
-          <div class="price-opt"><span>A5</span><strong>₹399</strong></div>
-          <div class="price-opt price-opt--hi"><span>A4</span><strong>₹699</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>8 pages</small><strong>₹499</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>8 pages</small><strong>₹749</strong><span class="price-badge">Popular</span></div>
+          <div class="price-opt"><span>A5</span><small>12 pages</small><strong>₹749</strong></div>
+          <div class="price-opt price-opt--hi"><span>A4</span><small>12 pages</small><strong>₹1,199</strong></div>
         </div>
         <ul class="price-features">
           <li><span>✔</span> Premium Design</li><li><span>✔</span> High Quality Printing</li>
